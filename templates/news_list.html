@@ -1,0 +1,55 @@
+{% extends 'layouts/basic.html' %}
+{% load static %}
+{% block links %}
+    <link rel="stylesheet" href="{% static 'css/news_list.css' %}">
+{% endblock %}
+{% block title %}Новости{% endblock %}
+
+{% block content %}
+    <section class="news_list_section">
+        <div class="container">
+            <div class="news_title">Новости и события</div>
+            <div class="news_list">
+                {% for post in news %}
+                    <a class="news_link" href="{% url 'news:current_news' pk=post.pk %}">
+                        <div class="news_card">
+                            <div class="news_date">{{ post.date|date:'d.m.Y' }}</div>
+                            {% if post.background_img %}
+                                <div class="news_img">
+                                    <img class="photo" src="{{ post.background_img.url }}" alt="">
+                                </div>
+                            {% else %}
+                                <div class="news_img">
+                                    <img class="no_photo" src="{% static 'img/logo.png' %}" alt="">
+                                </div>
+                            {% endif %}
+                            <div class="news_description">{{ post.name }}</div>
+                        </div>
+                    </a>
+                {% endfor %}
+            </div>
+            <div class="pagination">
+                {% if previous_page_number %}
+                    <a href="{% url 'news:news_list' %}?page={{ previous_page_number }}">Назад</a>
+                {% endif %}
+                {% if previous2 in page_range %}
+                    <a href="{% url 'news:news_list' %}?page={{ previous2 }}">{{ previous2 }}</a>
+                {% endif %}
+                {% if previous_page_number %}
+                    <a href="{% url 'news:news_list' %}?page={{ previous_page_number }}">{{ previous_page_number }}</a>
+                {% endif %}
+                <a class="active" href="#">{{ page }}</a>
+                {% if next_page_number %}
+                    <a href="{% url 'news:news_list' %}?page={{ next_page_number }}">{{ next_page_number }}</a>
+                {% endif %}
+                {% if next2 in page_range %}
+                    <a href="{% url 'news:news_list' %}?page={{ next2 }}">{{ next2 }}</a>
+                {% endif %}
+                {% if next_page_number %}
+                    <a href="{% url 'news:news_list' %}?page={{ next_page_number }}">Вперед</a>
+                {% endif %}
+            </div>
+        </div>
+    </section>
+{% endblock %}
+

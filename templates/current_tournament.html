@@ -1,0 +1,30 @@
+{% extends 'layouts/basic.html' %}
+{% load static %}
+{% block links %}
+    <link rel="stylesheet" href="{% static 'css/current_tournament.css' %}">
+{% endblock %}
+{% block title %}{% endblock %}
+
+{% block content %}
+    <section class="tournament_section">
+        <div class="container">
+            <h2>{{ tournament.name }}</h2>
+            <div class="description">{{ tournament.description }}</div>
+            {% if tournament.tournament_img.all %}
+                <div class="photos">
+                    {% for img in tournament.tournament_img.all %}
+                        <img src="{{ img.img.url }}" alt="">
+                    {% endfor %}
+                </div>
+            {% endif %}
+            {% if tournament.tournament_document.all %}
+                {% for document in tournament.tournament_document.all %}
+                    <div class="document">
+                        <img src="{% static 'img/pdf_icon.png' %}" alt="">
+                        <a href="{{ document.file.url }}" target="_blank">{{ document.name }}</a>
+                    </div>
+                {% endfor %}
+            {% endif %}
+        </div>
+    </section>
+{% endblock %}

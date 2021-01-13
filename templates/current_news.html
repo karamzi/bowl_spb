@@ -1,0 +1,33 @@
+{% extends 'layouts/basic.html' %}
+{% load static %}
+{% block links %}
+    <link rel="stylesheet" href="{% static 'css/current_news.css' %}">
+{% endblock %}
+{% block title %}{% endblock %}
+
+{% block content %}
+    <section class="news_section">
+        <div class="container">
+            <h2>{{ news.name }}</h2>
+            <div class="description">{{ news.description }}</div>
+            {% if news.news_img.all %}
+                <div class="photos">
+                    {% for img in news.news_img.all %}
+                        <img src="{{ img.img.url }}" alt="">
+                    {% endfor %}
+                </div>
+            {% endif %}
+            {% if news.news_document.all %}
+                {% for document in news.news_document.all %}
+                    <div class="document">
+                        <img src="{% static 'img/pdf_icon.png' %}" alt="">
+                        <a href="{{ document.file.url }}" target="_blank">{{ document.name }}</a>
+                    </div>
+                {% endfor %}
+            {% endif %}
+        </div>
+    </section>
+{% endblock %}
+
+
+

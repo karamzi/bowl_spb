@@ -1,0 +1,84 @@
+{% extends 'layouts/basic.html' %}
+{% load static %}
+{% block links %}
+    <link rel="stylesheet" href="{% static 'css/rating.css' %}">
+{% endblock %}
+{% block title %}Рейтинг и статистика{% endblock %}
+
+{% block content %}
+    <section class="section_rating">
+        <div class="container">
+            <div class="rating_title">Рейтинг и статистика</div>
+            <div class="rating_description">Рейтинг ведется на основе рейтинговых турниров проводимых федерацией
+                согласно
+                общим положениям. Результаты рейтинга используются для формирования сборной команды Санкт-Петербурга на
+                следующий календарный год
+            </div>
+            <div class="rating_by_years">
+                <div class="years">
+                    <div class="years_list">
+                        {% for year in years %}
+                            {% if year.tournaments %}
+                                <h3 data-year="{{ year.year }}">{{ year.year }}</h3>
+                                <div class="arrow-8"></div>
+                            {% endif %}
+                        {% endfor %}
+                    </div>
+                    {% for year in years %}
+                        {% if year.tournaments %}
+                            <div data-year="{{ year.year }}" class="rating">
+                                <div class="rating_links">
+                                    {% if year.statistic %}
+                                        <a href="{{ year.statistic.url }}" class="statistic_link"
+                                           target="_blank">Статистика</a>
+                                    {% endif %}
+                                    {% if year.rating %}
+                                        <a href="{{ year.rating.url }}" class="rating_link" target="_blank">Рейтинг</a>
+                                    {% endif %}
+                                </div>
+                                {% for tournament in year.tournaments %}
+                                    <div class="tournament_result">
+                                        <h4>{{ tournament.name }}</h4>
+                                        <table>
+                                            <thead>
+                                            <tr style="background-color: #009688;">
+                                                <th>Место</th>
+                                                <th>Спортсмен</th>
+                                                <th>1 игра</th>
+                                                <th>2 игра</th>
+                                                <th>3 игра</th>
+                                                <th>4 игра</th>
+                                                <th>5 игра</th>
+                                                <th>6 игра</th>
+                                                <th>Гандикап</th>
+                                                <th>Средний</th>
+                                                <th>Сумма</th>
+                                            </tr>
+                                            </thead>
+                                            <tbody>
+                                            {% for player in tournament.players %}
+                                                <tr>
+                                                    <td>{{ forloop.counter }}</td>
+                                                    <td>
+                                                        <a href="{% url 'main:profile' pk=player.id %}">{{ player.name }}</a>
+                                                    </td>
+                                                    {% for resutl in player.results %}
+                                                        <td>{{ resutl }}</td>
+                                                    {% endfor %}
+                                                    <td>0</td>
+                                                    <td>{{ player.mean }}</td>
+                                                    <td>{{ player.summ }}</td>
+                                                </tr>
+                                            {% endfor %}
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                {% endfor %}
+                            </div>
+                        {% endif %}
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </section>
+{% endblock %}

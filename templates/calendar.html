@@ -1,0 +1,50 @@
+{% extends 'layouts/basic.html' %}
+{% load static %}
+{% block links %}
+    <link rel="stylesheet" href="{% static 'css/calendar.css' %}">
+{% endblock %}
+{% block title %}{% endblock %}
+
+{% block content %}
+    <section class="calendar_section">
+        <div class="container">
+            <div class="calendar_title">Календарь соревнований</div>
+            <div class="calendar_table">
+                <table>
+                    <thead>
+                    <tr>
+                        <th>№</th>
+                        <th>Соревнование</th>
+                        <th>Город</th>
+                        <th>Статус</th>
+                        <th>Дата начала</th>
+                        <th>Дата окончания</th>
+                        <th>Положение</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {% for event in calendar %}
+                        <tr>
+                            <td>{{ forloop.counter }}</td>
+                            <td>{{ event.competition }}</td>
+                            <td>{{ event.city }}</td>
+                            <td>{{ event.status }}</td>
+                            <td>{{ event.date_start|date:'d.m' }}</td>
+                            <td>{{ event.date_finish|date:'d.m' }}</td>
+                            <td>
+                                {% if event.regulation %}
+                                    <a href="{{ event.regulation.file.url }}"><img src="{% static 'img/file_icon.png' %}" alt="rules"></a>
+                                {% endif %}
+                            </td>
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+            <div class="document">
+                <img src="{% static 'img/pdf_icon.png' %}" alt="">
+                <a href="#" target="_blank">Календарь PDF</a>
+            </div>
+        </div>
+    </section>
+{% endblock %}

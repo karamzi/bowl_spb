@@ -1,0 +1,95 @@
+{% extends 'layouts/basic.html' %}
+{% load static %}
+{% block links %}
+    <link rel="stylesheet" href="{% static 'css/profile.css' %}">
+{% endblock %}
+{% block title %}{{ player }}{% endblock %}
+
+{% block content %}
+    <section class="section_rating">
+        <div class="container">
+            <div class="rating_title">{{ player }}</div>
+            <div class="rating_by_years">
+                <div class="years">
+                    <div class="years_list">
+                        {% for year in years %}
+                            <h3 data-year="{{ year.year }}">{{ year.year }}</h3>
+                            <div class="arrow-8"></div>
+                        {% endfor %}
+                    </div>
+                    {% for year in years %}
+                        {% if year.statistic %}
+                            <div data-year="{{ year.year }}" class="rating">
+                                <div class="statistic">
+                                    <h4>Статистика</h4>
+                                    <table>
+                                        <thead>
+                                        <tr style="background-color: #009688;">
+                                            <th>Спортсмен</th>
+                                            <th>Разряд</th>
+                                            <th>Минимальная игра</th>
+                                            <th>Максимальная игра</th>
+                                            <th>Средний</th>
+                                            <th>Количество Игр</th>
+                                            <th>Сумма</th>
+                                        </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td><a href="{% url 'main:profile' pk=year.statistic.name.pk %}">{{ year.statistic.name }}</a></td>
+                                                <td>{{ year.statistic.name.rang }}</td>
+                                                <td>{{ year.statistic.min }}</td>
+                                                <td>{{ year.statistic.max }}</td>
+                                                <td>{{ year.statistic.mean }}</td>
+                                                <td>{{ year.statistic.score }}</td>
+                                                <td>{{ year.statistic.summ }}</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                                {% if year.tournaments %}
+                                    {% for tournament in year.tournaments %}
+                                        <div class="tournament_result">
+                                            <h4>{{ tournament.name }}</h4>
+                                            <table>
+                                                <thead>
+                                                <tr style="background-color: #009688;">
+                                                    <th>Место</th>
+                                                    <th>Спортсмен</th>
+                                                    <th>1 игра</th>
+                                                    <th>2 игра</th>
+                                                    <th>3 игра</th>
+                                                    <th>4 игра</th>
+                                                    <th>5 игра</th>
+                                                    <th>6 игра</th>
+                                                    <th>Гандикап</th>
+                                                    <th>Средний</th>
+                                                    <th>Сумма</th>
+                                                </tr>
+                                                </thead>
+                                                <tbody>
+                                                <tr>
+                                                    <td>1</td>
+                                                    <td>
+                                                        <a href="{% url 'main:profile' pk=tournament.results.id %}">{{ tournament.results.name }}</a>
+                                                    </td>
+                                                    {% for result in tournament.results.results %}
+                                                        <td>{{ result }}</td>
+                                                    {% endfor %}
+                                                    <td>0</td>
+                                                    <td>{{ tournament.results.mean }}</td>
+                                                    <td>{{ tournament.results.summ }}</td>
+                                                </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    {% endfor %}
+                                {% endif %}
+                            </div>
+                        {% endif %}
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </section>
+{% endblock %}
