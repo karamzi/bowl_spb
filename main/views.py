@@ -70,6 +70,14 @@ def calendar(request):
     return render(request, 'calendar.html', context)
 
 
+def goals(request):
+    return render(request, 'goals.html')
+
+
+def leadership(request):
+    return render(request, 'leadership.html')
+
+
 def ajax_parse_results(request):
     if request.method == 'POST':
         data = json.loads(request.POST['results'])
