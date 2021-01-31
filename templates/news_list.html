@@ -14,15 +14,18 @@
                     <a class="news_link" href="{% url 'news:current_news' pk=post.pk %}">
                         <div class="news_card">
                             <div class="news_date">{{ post.date|date:'d.m.Y' }}</div>
-                            {% if post.background_img %}
-                                <div class="news_img">
-                                    <img class="photo" src="{{ post.background_img.url }}" alt="">
-                                </div>
-                            {% else %}
-                                <div class="news_img">
-                                    <img class="no_photo" src="{% static 'img/logo.png' %}" alt="">
-                                </div>
-                            {% endif %}
+{#                            {% if post.background_img %}#}
+{#                                <div class="news_img">#}
+{#                                    <img class="photo" src="{{ post.background_img.url }}" alt="">#}
+{#                                </div>#}
+{#                            {% else %}#}
+{#                                <div class="news_img">#}
+{#                                    <img class="no_photo" src="{% static 'img/logo.png' %}" alt="">#}
+{#                                </div>#}
+{#                            {% endif %}#}
+                            <div class="news_img">
+                                <img class="no_photo" src="{% static 'img/logo.png' %}" alt="">
+                            </div>
                             <div class="news_description">{{ post.name }}</div>
                         </div>
                     </a>

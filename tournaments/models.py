@@ -30,12 +30,12 @@ class Years(models.Model):
 
 
 class Regulation(models.Model):
-    year = models.OneToOneField(Years, verbose_name='Год', on_delete=models.PROTECT)
-    tournament = models.OneToOneField('Tournaments', verbose_name='Турнир', on_delete=models.PROTECT)
+    year = models.ForeignKey(Years, related_name='regulations', verbose_name='Год', on_delete=models.PROTECT)
+    name = models.CharField(max_length=255, verbose_name='Название документа')
     file = models.FileField(verbose_name='Регламент', upload_to=regulation_path)
 
     def __str__(self):
-        return self.tournament.name
+        return self.name
 
     class Meta:
         verbose_name = 'Регламент'
@@ -49,8 +49,8 @@ class Tournaments(models.Model):
     short_description = models.TextField(max_length=100, verbose_name='Короткое описание')
     description = models.TextField(verbose_name='Описание')
     date = models.DateField(verbose_name='Дата')
-    file = models.OneToOneField(Regulation, on_delete=models.PROTECT, verbose_name='Регламент', blank=True,
-                                null=True)
+    regulation = models.OneToOneField(Regulation, on_delete=models.CASCADE, verbose_name='Регламент', null=True,
+                                      blank=True)
 
     def __str__(self):
         return self.name
@@ -67,8 +67,8 @@ class Calendar(models.Model):
     status = models.CharField(max_length=10, verbose_name='Статус соревнований', blank=True)
     date_start = models.DateField(verbose_name='Дата начала')
     date_finish = models.DateField(verbose_name='Дата окончания')
-    regulation = models.OneToOneField(Regulation, on_delete=models.PROTECT, verbose_name='Регламент', blank=True,
-                                      null=True)
+    regulation = models.OneToOneField(Regulation, on_delete=models.CASCADE, verbose_name='Регламент', null=True,
+                                      blank=True)
 
     def __str__(self):
         return self.competition

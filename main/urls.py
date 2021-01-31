@@ -10,4 +10,7 @@ urlpatterns = [
     path('api/parse_results/', main.ajax_parse_results),
     path('goals/', main.goals, name='goals'),
     path('leadership/', main.leadership, name='leadership'),
+    path('documents/', main.documents, name='documents'),
+    path('protocols/', main.protocols, name='protocols'),
+    path('regulations/', main.regulations, name='regulations'),
 ]

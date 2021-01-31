@@ -4,7 +4,7 @@ fbspb_django/prod_settings.py
 *.pyc
 */migrations/*
 */migrations
-media/*
+media/
 .DS_Store
 */.DS_Store
 venv/*

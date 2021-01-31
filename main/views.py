@@ -78,6 +78,22 @@ def leadership(request):
     return render(request, 'leadership.html')
 
 
+def documents(request):
+    return render(request, 'documents.html')
+
+
+def protocols(request):
+    return render(request, 'protocols.html')
+
+
+def regulations(request):
+    years = Years.objects.all()
+    context = {
+        'years': years,
+    }
+    return render(request, 'regulations.html', context)
+
+
 def ajax_parse_results(request):
     if request.method == 'POST':
         data = json.loads(request.POST['results'])

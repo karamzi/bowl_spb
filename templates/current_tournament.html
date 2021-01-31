@@ -3,7 +3,7 @@
 {% block links %}
     <link rel="stylesheet" href="{% static 'css/current_tournament.css' %}">
 {% endblock %}
-{% block title %}{% endblock %}
+{% block title %}Турниры{% endblock %}
 
 {% block content %}
     <section class="tournament_section">
@@ -24,6 +24,12 @@
                         <a href="{{ document.file.url }}" target="_blank">{{ document.name }}</a>
                     </div>
                 {% endfor %}
+            {% endif %}
+            {% if tournament.regulation %}
+                    <div class="document">
+                        <img src="{% static 'img/pdf_icon.png' %}" alt="">
+                        <a href="{{ tournament.regulation.file.url }}" target="_blank">{{ tournament.regulation.name }}</a>
+                    </div>
             {% endif %}
         </div>
     </section>

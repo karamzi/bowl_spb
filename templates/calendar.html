@@ -3,7 +3,7 @@
 {% block links %}
     <link rel="stylesheet" href="{% static 'css/calendar.css' %}">
 {% endblock %}
-{% block title %}{% endblock %}
+{% block title %}Календарь{% endblock %}
 
 {% block content %}
     <section class="calendar_section">
@@ -33,7 +33,7 @@
                             <td>{{ event.date_finish|date:'d.m' }}</td>
                             <td>
                                 {% if event.regulation %}
-                                    <a href="{{ event.regulation.file.url }}"><img src="{% static 'img/file_icon.png' %}" alt="rules"></a>
+                                    <a href="{{ event.regulation.file.url }}" target="_blank"><img src="{% static 'img/file_icon.png' %}" alt="rules"></a>
                                 {% endif %}
                             </td>
                         </tr>

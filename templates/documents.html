@@ -1,0 +1,23 @@
+{% extends 'layouts/basic.html' %}
+{% load static %}
+{% block links %}
+    <link rel="stylesheet" href="{% static 'css/documents.css' %}">
+{% endblock %}
+{% block title %}Документы Федерации{% endblock %}
+
+{% block content %}
+    <section class="section_documents">
+        <div class="container">
+            <h1>Документы</h1>
+            <h2>Уставные</h2>
+            <a href="#">Устав РОО "Федерация Боулинга Санкт-Петербурга"</a>
+            <a href="#">Аккредитация региональной спортивной федерации</a>
+            <a href="#">Реестр членов РОО ФБ СПб</a>
+            <h2>Положения</h2>
+            <a href="#">Положение о формировании сборной</a>
+            <h2>Присвоения</h2>
+            <a href="#">О присвоение спортивных разрядов №274</a>
+            <a href="#">О присвоение спортивных разрядов №273</a>
+        </div>
+    </section>
+{% endblock %}
