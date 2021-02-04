@@ -23,7 +23,7 @@ class Rating(models.Model):
 
 
 class Statistics(models.Model):
-    name = models.OneToOneField(Profile, on_delete=models.PROTECT, verbose_name='Спортсмен')
+    name = models.ForeignKey(Profile, related_name='statistic_profile', on_delete=models.PROTECT, verbose_name='Спортсмен')
     year = models.ForeignKey(Years, on_delete=models.PROTECT, verbose_name='Год', null=True, blank=True,
                              related_name='statistic_year')
     mean = models.DecimalField(max_digits=5, decimal_places=2, verbose_name='Средний', default=0)

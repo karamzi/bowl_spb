@@ -22,6 +22,7 @@ body {
 
 .container {
     max-width: 1170px;
+    min-width: 1170px;
     width: 100%;
     margin: 0 auto;
     position: relative;
@@ -744,6 +745,10 @@ footer {
     body {
         background: none;
 
+    }
+
+    .container {
+        min-width: auto;
     }
 
     .background {

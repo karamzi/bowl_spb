@@ -13,4 +13,5 @@ urlpatterns = [
     path('documents/', main.documents, name='documents'),
     path('protocols/', main.protocols, name='protocols'),
     path('regulations/', main.regulations, name='regulations'),
+    path('studentsTournaments/', main.students_tournaments, name='students_tournaments'),
 ]

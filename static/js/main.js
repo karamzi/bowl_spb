@@ -29,7 +29,9 @@ function hideAccordion() {
 const month = document.querySelector('.month')
 const monthList = document.querySelector('.month_list')
 
-month.addEventListener('click', toggleMonthMenu)
+if (month) {
+    month.addEventListener('click', toggleMonthMenu)
+}
 
 function toggleMonthMenu() {
     if (monthList.style.display == 'none') {
@@ -40,7 +42,7 @@ function toggleMonthMenu() {
 }
 
 document.addEventListener('click', function (e) {
-    if (!e.target.closest('.month')) {
+    if (!e.target.closest('.month') && month) {
         monthList.style.display = 'none'
     }
 })
@@ -55,14 +57,14 @@ const nav = document.querySelector('nav')
 burger.addEventListener('click', toggleMobileMenu)
 
 document.addEventListener('click', function (e) {
-    if (!e.target.closest('.nav_link')) {
+    if (!e.target.closest('.nav_link') && window.innerWidth < 990 ) {
         nav.style.display = 'none'
     }
 })
 
 function toggleMobileMenu(e) {
     e.stopPropagation()
-    if (nav.style.display == 'flex') {
+    if (nav.style.display === 'flex') {
         nav.style.display = 'none'
     } else {
         nav.style.display = 'flex'
@@ -70,3 +72,27 @@ function toggleMobileMenu(e) {
 }
 
 //      Конец мобильная навигация       //
+
+//      Табы по годам       //
+
+const years = document.querySelectorAll('.year')
+const rating = document.querySelectorAll('.rating')
+let year = ''
+
+
+if (years) {
+    years.forEach(element => {
+        element.addEventListener('click', function () {
+            year = this.getAttribute('data-year')
+
+            rating.forEach(element => {
+                element.style.display = 'none'
+                if (element.getAttribute('data-year') === year) {
+                    element.style.display = 'flex'
+                }
+            })
+        })
+    })
+}
+
+//      Конец табы по годам     //

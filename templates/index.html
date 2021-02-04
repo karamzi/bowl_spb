@@ -31,7 +31,7 @@
                             <a href="{% url 'main:leadership' %}">Руководство</a>
                             <a href="{% url 'main:documents' %}">Документы</a>
                             <a href="{% url 'main:protocols' %}">Протоколы</a>
-                            <a href="#">Сборная</a>
+{#                            <a href="#">Сборная</a>#}
                         </div>
                     </div>
                     <div class="nav_link">
@@ -41,12 +41,12 @@
                             <a href="{% url 'main:regulations' %}">Регламенты</a>
                             <a href="{% url 'tournaments:tournaments_list' %}">Отчеты</a>
                             <a href="{% url 'rating:rating' %}">Рейтинг и статистика</a>
-                            <a href="#">Студенческие турниры</a>
-                            <a href="#">Любительские и детские</a>
+                            <a href="{% url 'main:students_tournaments' %}">Студенческие турниры</a>
+{#                            <a href="#">Любительские и детские</a>#}
                         </div>
                     </div>
                     <div class="nav_link">
-                        <a href="#">О боулинге</a>
+                        <a href="#">Научите меня</a>
                     </div>
                     <div class="nav_link">
                         <a href="#">Контакты</a>

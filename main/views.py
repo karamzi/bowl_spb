@@ -6,6 +6,7 @@ from tournaments.models import Tournaments, Calendar, Years
 from rating.models import Rating, Statistics
 from news.models import News
 import json
+from django.views.decorators.csrf import csrf_exempt
 
 
 def index(request):
@@ -94,17 +95,22 @@ def regulations(request):
     return render(request, 'regulations.html', context)
 
 
+def students_tournaments(request):
+    return render(request, 'students_tournaments.html')
+
+
+@csrf_exempt
 def ajax_parse_results(request):
     if request.method == 'POST':
         data = json.loads(request.POST['results'])
         tournament = Tournaments.objects.get(pk=data['id'])
         for player in data['players']:
             result = Results()
-            year = Years.objects.get(year=datetime.datetime.now().year-1)
+            year = Years.objects.get(year=datetime.datetime.now().year-2)
             user, status = Profile.objects.get_or_create(name=player['name'])
             user.rang = player['rang']
             user.save()
-            statistic, status = Statistics.objects.get_or_create(name=user)
+            statistic, status = Statistics.objects.get_or_create(name=user, year=year)
             statistic.year = year
             statistic.summ = statistic.summ + int(player['summ'])
             statistic.score = statistic.score + len(player['results'])
