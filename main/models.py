@@ -65,6 +65,7 @@ class Profile(models.Model):
     class Meta:
         verbose_name = 'Спортсмен'
         verbose_name_plural = 'Спортсмены'
+        ordering = ['name']
 
 
 class Results(models.Model):

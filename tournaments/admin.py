@@ -12,6 +12,16 @@ class TournamentAdminForm(forms.ModelForm):
         fields = '__all__'
 
 
+class CalendarAdmin(admin.ModelAdmin):
+    list_display = ('competition', 'city', 'date_start', 'date_finish')
+    list_display_links = ('competition', 'city', 'date_start', 'date_finish')
+
+
+class RegulationsAdmin(admin.ModelAdmin):
+    list_display = ('year', 'name')
+    list_display_links = ('year', 'name')
+
+
 class TournamentAdmin(admin.ModelAdmin):
     list_display = ('name', 'short_description', 'date')
     list_display_links = ('name', 'short_description')
@@ -21,5 +31,5 @@ class TournamentAdmin(admin.ModelAdmin):
 
 admin.site.register(Tournaments, TournamentAdmin)
 admin.site.register(Years)
-admin.site.register(Calendar)
-admin.site.register(Regulation)
+admin.site.register(Calendar, CalendarAdmin)
+admin.site.register(Regulation, RegulationsAdmin)
