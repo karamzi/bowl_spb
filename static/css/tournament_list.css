@@ -29,6 +29,7 @@ body {
 
 .container {
     max-width: 1170px;
+    min-width: 1170px;
     width: 100%;
     margin: 0 auto;
 }
@@ -226,7 +227,7 @@ nav {
  ________________________*/
 
 .tournament_list_section {
-    padding: 40px;
+    padding: 20px;
     flex-grow: 1;
 }
 
@@ -350,6 +351,10 @@ footer {
         height: unset;
     }
 
+    .container {
+        min-width: auto;
+    }
+
     .nav_link {
         width: 225px;
     }
@@ -374,7 +379,46 @@ footer {
         display: flex;
     }
 
-    .news_link {
-        width: 95%;
+}
+
+@media (max-width: 900px) {
+    .nav_title:after, .nav_title:before {
+        width: 100px;
+
+    }
+
+    .news_section h2 {
+        margin-bottom: 20px;
+    }
+
+    .nav_title:after {
+        transform: translateX(-120px);
+    }
+
+    .nav_title:before {
+        transform: translateX(120px);
+    }
+}
+
+@media (max-width: 500px) {
+    .photos {
+        flex-direction: column;
+    }
+
+    .description {
+        font-size: 13px;
+    }
+
+    .nav_title:after, .nav_title:before {
+        width: 50px;
+
+    }
+
+    .nav_title:after {
+        transform: translateX(-95px);
+    }
+
+    .nav_title:before {
+        transform: translateX(95px);
     }
 }

@@ -14,11 +14,14 @@ def document_path(instance, filename):
 
 
 class NewsTournamentsImg(models.Model):
+    name = models.CharField(max_length=100, verbose_name='Подпись', blank=True, null=True)
     news = models.ForeignKey(News, related_name='news_img', verbose_name='Новость', on_delete=models.CASCADE,
                              blank=True, null=True)
     tournament = models.ForeignKey(Tournaments, related_name='tournament_img', verbose_name='Турнир',
                                    on_delete=models.CASCADE, blank=True, null=True)
     img = models.ImageField(verbose_name='Изображение', upload_to=img_path)
+    width = models.SmallIntegerField(verbose_name='Ширина', default=300)
+    height = models.SmallIntegerField(verbose_name='Высота', default=200)
 
     def __str__(self):
         return self.img.url

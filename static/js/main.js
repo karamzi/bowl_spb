@@ -57,7 +57,7 @@ const nav = document.querySelector('nav')
 burger.addEventListener('click', toggleMobileMenu)
 
 document.addEventListener('click', function (e) {
-    if (!e.target.closest('.nav_link') && window.innerWidth < 990 ) {
+    if (!e.target.closest('.nav_link') && window.innerWidth < 990) {
         nav.style.display = 'none'
     }
 })
@@ -79,6 +79,7 @@ const years = document.querySelectorAll('.year')
 const rating = document.querySelectorAll('.rating')
 let year = ''
 
+rating[0].style.display = 'flex'
 
 if (years) {
     years.forEach(element => {

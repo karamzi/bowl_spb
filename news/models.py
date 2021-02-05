@@ -8,9 +8,8 @@ def img_path(instance, filename):
 
 
 class News(models.Model):
-
-    name = models.CharField(max_length=50, verbose_name='Название новости')
-    short_description = models.TextField(max_length=100, verbose_name='Короткое описание')
+    name = models.CharField(max_length=100, verbose_name='Название новости')
+    short_description = models.TextField(max_length=255, verbose_name='Короткое описание')
     description = models.TextField(verbose_name='Описание')
     date = models.DateField(verbose_name='Дата')
     # background_img = models.ImageField(verbose_name='Заставка', blank=True, null=True, upload_to=img_path)

@@ -29,6 +29,7 @@ body {
 
 .container {
     max-width: 1170px;
+    min-width: 1170px;
     width: 100%;
     margin: 0 auto;
 }
@@ -228,6 +229,7 @@ ______________________ */
 .tournament_section {
     display: flex;
     flex-grow: 1;
+    padding: 0 20px;
 }
 
 .tournament_section h2 {
@@ -238,22 +240,27 @@ ______________________ */
 
 .description {
     color: white;
-    white-space: pre-wrap;
     font-size: 18px;
     margin-bottom: 30px;
+}
+
+.description p {
+    margin-bottom: 10px;
+    line-height: 1.5;
+    text-align: justify;
 }
 
 .photos {
     display: flex;
     flex-wrap: wrap;
     margin-bottom: 30px;
+    align-items: center;
 }
 
 .photos img {
-    width: 300px;
-    height: 200px;
     box-shadow: 0 0 25px 2px rgba(34, 60, 80, .8);
     margin-right: 20px;
+    margin-bottom: 20px;
 }
 
 .photos img:last-child {
@@ -308,6 +315,10 @@ footer {
         height: unset;
     }
 
+    .container {
+        min-width: auto;
+    }
+
     .nav_link {
         width: 225px;
     }
@@ -334,5 +345,43 @@ footer {
 
     .news_link {
         width: 95%;
+    }
+}
+
+@media (max-width: 900px) {
+    .nav_title:after, .nav_title:before {
+        width: 100px;
+
+    }
+
+    .nav_title:after {
+        transform: translateX(-120px);
+    }
+
+    .nav_title:before {
+        transform: translateX(120px);
+    }
+}
+
+@media (max-width: 500px) {
+    .photos {
+        flex-direction: column;
+    }
+
+    .photos img {
+        margin: 0 0 20px;
+    }
+
+    .nav_title:after, .nav_title:before {
+        width: 50px;
+
+    }
+
+    .nav_title:after {
+        transform: translateX(-95px);
+    }
+
+    .nav_title:before {
+        transform: translateX(95px);
     }
 }

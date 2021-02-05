@@ -3,17 +3,22 @@
 {% block links %}
     <link rel="stylesheet" href="{% static 'css/current_news.css' %}">
 {% endblock %}
-{% block title %}Новости{% endblock %}
+{% block title %}{{ news.name }}{% endblock %}
 
 {% block content %}
     <section class="news_section">
         <div class="container">
             <h2>{{ news.name }}</h2>
-            <div class="description">{{ news.description }}</div>
+            <div class="description">{{ news.description|safe }}</div>
             {% if news.news_img.all %}
                 <div class="photos">
                     {% for img in news.news_img.all %}
-                        <img src="{{ img.img.url }}" alt="">
+                        <div class="photo">
+                            <img src="{{ img.img.url }}" width="{{ img.width }}" height="{{ img.height }}" alt="">
+                            {% if img.name %}
+                                <p>{{ img.name }}</p>
+                            {% endif %}
+                        </div>
                     {% endfor %}
                 </div>
             {% endif %}

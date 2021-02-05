@@ -3,17 +3,17 @@
 {% block links %}
     <link rel="stylesheet" href="{% static 'css/current_tournament.css' %}">
 {% endblock %}
-{% block title %}Турниры{% endblock %}
+{% block title %}{{ tournament.name }}{% endblock %}
 
 {% block content %}
     <section class="tournament_section">
         <div class="container">
             <h2>{{ tournament.name }}</h2>
-            <div class="description">{{ tournament.description }}</div>
+            <div class="description">{{ tournament.description|safe }}</div>
             {% if tournament.tournament_img.all %}
                 <div class="photos">
                     {% for img in tournament.tournament_img.all %}
-                        <img src="{{ img.img.url }}" alt="">
+                        <img src="{{ img.img.url }}" width="{{ img.width }}" height="{{ img.height }}" alt="">
                     {% endfor %}
                 </div>
             {% endif %}

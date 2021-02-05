@@ -29,6 +29,7 @@ body {
 
 .container {
     max-width: 1170px;
+    min-width: 1170px;
     width: 100%;
     margin: 0 auto;
 }
@@ -241,7 +242,8 @@ nav {
     width: 100%;
     display: flex;
     justify-content: center;
-    padding: 0 20px 50px;
+    padding: 0 20px;
+    margin-bottom: 40px;
 }
 
 .calendar_table table {
@@ -315,6 +317,10 @@ footer {
         height: unset;
     }
 
+    .container {
+        min-width: auto;
+    }
+
     .nav_link {
         width: 225px;
     }
@@ -339,7 +345,49 @@ footer {
         display: flex;
     }
 
-    .news_link {
-        width: 95%;
+    .calendar_title {
+        margin: 0 20px 40px;
+    }
+}
+
+@media (max-width: 900px) {
+    .nav_title:after, .nav_title:before {
+        width: 100px;
+
+    }
+
+    .nav_title:after {
+        transform: translateX(-120px);
+    }
+
+    .nav_title:before {
+        transform: translateX(120px);
+    }
+
+    .calendar_table {
+        display: flex;
+        flex-direction: column;
+        overflow-y: scroll;
+        width: 97%;
+    }
+
+    .calendar_table table {
+        min-width: 900px;
+        font-size: 15px;
+    }
+}
+
+@media (max-width: 500px) {
+    .nav_title:after, .nav_title:before {
+        width: 50px;
+
+    }
+
+    .nav_title:after {
+        transform: translateX(-95px);
+    }
+
+    .nav_title:before {
+        transform: translateX(95px);
     }
 }

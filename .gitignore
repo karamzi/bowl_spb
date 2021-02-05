@@ -10,3 +10,5 @@ media/
 venv/*
 static/video/
 fbspb_django/settings.py
+static/admin/
+static/ckeditor/
