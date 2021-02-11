@@ -1,12 +1,12 @@
 from django.contrib import admin
 from .models import News
 from django import forms
-from ckeditor.widgets import CKEditorWidget
+from ckeditor_uploader.widgets import CKEditorUploadingWidget
 from main.admin import NewsImgAdmin, NewsDocumentsAdmin
 
 
 class NewsAdminForm(forms.ModelForm):
-    description = forms.CharField(label='Описание', widget=CKEditorWidget())
+    description = forms.CharField(label='Описание', widget=CKEditorUploadingWidget())
 
     class Meta:
         model = News
