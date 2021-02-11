@@ -18,14 +18,14 @@ def rating_path(instance, filename):
 class Years(models.Model):
     year = models.SmallIntegerField(verbose_name='Год')
     statistic = models.FileField(verbose_name='Статистика', upload_to=statistic_path, blank=True, null=True)
-    rating = models.FileField(verbose_name='Райтинг', upload_to=rating_path, blank=True, null=True)
+    rating = models.FileField(verbose_name='Рейтинг', upload_to=rating_path, blank=True, null=True)
 
     def __str__(self):
         return str(self.year)
 
     class Meta:
         verbose_name = 'Год'
-        verbose_name_plural = 'Года'
+        verbose_name_plural = 'Общая статистика'
         ordering = ['-year']
 
 

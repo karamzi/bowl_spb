@@ -8,5 +8,10 @@ class RatingAdmin(admin.ModelAdmin):
     list_editable = ('active',)
 
 
+class StatisticsAdmin(admin.ModelAdmin):
+    list_display = ('year', 'name', 'mean', 'summ')
+    list_display_links = ('year', 'name', 'mean', 'summ')
+
+
 admin.site.register(Rating, RatingAdmin)
-# admin.site.register(Statistics)
+admin.site.register(Statistics, StatisticsAdmin)

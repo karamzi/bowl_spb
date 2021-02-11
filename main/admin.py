@@ -1,18 +1,36 @@
 from django.contrib import admin
-from .models import NewsTournamentDocuments, NewsTournamentsImg, Profile, Results
+from .models import NewsImg, NewsDocuments, TournamentDocuments, TournamentImg, Profile, Results
 
 
-class NewsTournamentsImgAdmin(admin.ModelAdmin):
-    list_display = ('news', 'tournament', 'name')
-    list_display_links = ('news', 'tournament', 'name')
+class NewsImgAdmin(admin.TabularInline):
+    model = NewsImg
+    extra = 1
 
 
-class NewsTournamentDocumentsAdmin(admin.ModelAdmin):
-    list_display = ('name', 'news', 'tournament')
-    list_display_links = ('name', 'news', 'tournament')
+class NewsDocumentsAdmin(admin.TabularInline):
+    model = NewsDocuments
+    extra = 1
 
 
-admin.site.register(NewsTournamentsImg, NewsTournamentsImgAdmin)
-admin.site.register(NewsTournamentDocuments, NewsTournamentDocumentsAdmin)
-# admin.site.register(Profile)
-# admin.site.register(Results)
+class TournamentImgAdmin(admin.TabularInline):
+    model = TournamentImg
+    extra = 1
+
+
+class TournamentDocumentsAdmin(admin.TabularInline):
+    model = TournamentDocuments
+    extra = 1
+
+
+class ResultsAdmin(admin.ModelAdmin):
+    list_display = ('tournament', 'player', 'results')
+    list_display_links = ('tournament', 'player', 'results')
+
+
+class ProfileAdmin(admin.ModelAdmin):
+    list_display = ('name', 'rang')
+    list_display_links = ('name', 'rang')
+
+
+admin.site.register(Profile, ProfileAdmin)
+admin.site.register(Results, ResultsAdmin)
