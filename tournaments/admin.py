@@ -1,12 +1,12 @@
 from django.contrib import admin
 from .models import Tournaments, Years, Calendar, Regulation
 from django import forms
-from ckeditor.widgets import CKEditorWidget
+from ckeditor_uploader.widgets import CKEditorUploadingWidget
 from main.admin import TournamentImgAdmin, TournamentDocumentsAdmin
 
 
 class TournamentAdminForm(forms.ModelForm):
-    description = forms.CharField(label='Описание', widget=CKEditorWidget())
+    description = forms.CharField(label='Описание', widget=CKEditorUploadingWidget())
 
     class Meta:
         model = Tournaments
