@@ -99,6 +99,10 @@ def students_tournaments(request):
     return render(request, 'students_tournaments.html')
 
 
+def contacts(request):
+    return render(request, 'contacts.html')
+
+
 @csrf_exempt
 def ajax_parse_results(request):
     if request.method == 'POST':
@@ -106,7 +110,7 @@ def ajax_parse_results(request):
         tournament = Tournaments.objects.get(pk=data['id'])
         for player in data['players']:
             result = Results()
-            year = Years.objects.get(year=datetime.datetime.now().year-2)
+            year = Years.objects.get(year=datetime.datetime.now().year - 2)
             user, status = Profile.objects.get_or_create(name=player['name'])
             user.rang = player['rang']
             user.save()
