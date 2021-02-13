@@ -204,24 +204,14 @@
                     </tr>
                     </thead>
                     <tbody>
-                    <tr>
-                        <td>1</td>
-                        <td>кмс</td>
-                        <td><a href="#">Липкина Светлана</a></td>
-                        <td>49</td>
-                    </tr>
-                    <tr>
-                        <td>2</td>
-                        <td>кмс</td>
-                        <td><a href="#">Полина Шутова</a></td>
-                        <td>45</td>
-                    </tr>
-                    <tr>
-                        <td>3</td>
-                        <td>мс</td>
-                        <td><a href="#">Федорова Анастасия</a></td>
-                        <td>42</td>
-                    </tr>
+                    {% for player in woman %}
+                        <tr>
+                            <td>{{ forloop.counter }}</td>
+                            <td>{{ player.player.rang }}</td>
+                            <td><a href="{% url 'main:profile' pk=player.player.pk %}">{{ player.player }}</a></td>
+                            <td>{{ player.score }}</td>
+                        </tr>
+                    {% endfor %}
                     </tbody>
                 </table>
             </div>

@@ -21,12 +21,14 @@ def index(request):
     date_to = datetime.date(datetime.datetime.now().year + month // 12, month % 12 + 1, 1) + datetime.timedelta()
     calendar = Calendar.objects.filter(date_start__gte=date_from, date_start__lt=date_to)
     man = Rating.objects.filter(league='man', active=True)[:6]
+    woman = Rating.objects.filter(league='woman', active=True)[:6]
     context = {
         'news': news,
         'month_list': month_list,
         'current_month': month_list[month - 1],
         'calendar': calendar,
         'man': man,
+        'woman': woman,
     }
     return render(request, 'index.html', context)
 
