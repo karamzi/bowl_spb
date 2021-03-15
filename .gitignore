@@ -1,5 +1,5 @@
 db.sqlite3
-fbspb_django/prod_settings.py
+fbspb_django/settings.py
 */__pycache__/*
 *.pyc
 */migrations/*

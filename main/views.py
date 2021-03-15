@@ -2,7 +2,7 @@ import datetime
 from django.core.exceptions import ObjectDoesNotExist
 from django.shortcuts import render, HttpResponse
 from .models import Profile, Results
-from tournaments.models import Tournaments, Calendar, Years
+from tournaments.models import Tournaments, Calendar, Years, Regulation
 from rating.models import Rating, Statistics
 from news.models import News
 import json
@@ -91,8 +91,10 @@ def protocols(request):
 
 def regulations(request):
     years = Years.objects.all()
+    regulations = Regulation.objects.filter(archive=False)
     context = {
         'years': years,
+        'regulations': regulations,
     }
     return render(request, 'regulations.html', context)
 

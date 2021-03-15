@@ -12,12 +12,19 @@
             <a href="#">Общий Регламент официальных соревнований 2021</a>
             <p>Внимание! Для участия в официальных турнирах федерации все спортсмены должны иметь стаховку (см. Общие
                 Положения)</p>
+            {% for regulation in regulations %}
+                <a href="{{ regulation.file.url }}" target="_blank">{{ regulation.name }}</a>
+            {% endfor %}
             <h2>Архив</h2>
             {% for year in years %}
                 {% if year.regulations.all %}
-                    <h3>{{ year }}</h3>
                     {% for regulation in year.regulations.all %}
-                        <a href="{{ regulation.file.url }}" target="_blank">{{ regulation.name }}</a>
+                        {% if forloop.first and regulation.archive %}
+                            <h3>{{ year }}</h3>
+                        {% endif %}
+                        {% if regulation.archive %}
+                            <a href="{{ regulation.file.url }}" target="_blank">{{ regulation.name }}</a>
+                        {% endif %}
                     {% endfor %}
                 {% endif %}
             {% endfor %}

@@ -33,6 +33,7 @@ class Regulation(models.Model):
     year = models.ForeignKey(Years, related_name='regulations', verbose_name='Год', on_delete=models.PROTECT)
     name = models.CharField(max_length=255, verbose_name='Название документа')
     file = models.FileField(verbose_name='Регламент', upload_to=regulation_path)
+    archive = models.BooleanField(verbose_name='Архив', default=True)
 
     def __str__(self):
         return self.name
