@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import NewsImg, NewsDocuments, TournamentDocuments, TournamentImg, Profile, Results
+from .models import NewsImg, NewsDocuments, TournamentDocuments, TournamentImg, Profile, Results, StudentsTournaments
 
 
 class NewsImgAdmin(admin.TabularInline):
@@ -34,3 +34,4 @@ class ProfileAdmin(admin.ModelAdmin):
 
 admin.site.register(Profile, ProfileAdmin)
 admin.site.register(Results, ResultsAdmin)
+admin.site.register(StudentsTournaments)

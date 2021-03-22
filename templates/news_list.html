@@ -9,24 +9,20 @@
     <section class="news_list_section">
         <div class="container">
             <div class="news_title">Новости и события</div>
-            <div class="news_list">
+            <div class="news_cards">
                 {% for post in news %}
-                    <a class="news_link" href="{% url 'news:current_news' pk=post.pk %}">
+                    <a href="{% url 'news:current_news' pk=post.pk %}" class="news_link">
                         <div class="news_card">
-                            <div class="news_date">{{ post.date|date:'d.m.Y' }}</div>
-{#                            {% if post.background_img %}#}
-{#                                <div class="news_img">#}
-{#                                    <img class="photo" src="{{ post.background_img.url }}" alt="">#}
-{#                                </div>#}
-{#                            {% else %}#}
-{#                                <div class="news_img">#}
-{#                                    <img class="no_photo" src="{% static 'img/logo.png' %}" alt="">#}
-{#                                </div>#}
-{#                            {% endif %}#}
-                            <div class="news_img">
-                                <img class="no_photo" src="{% static 'img/logo.png' %}" alt="">
+                            <div class="news_head">
+                                <div class="news_date">
+                                    <p>{{ post.date|date:'j' }}</p>
+                                    <p>{{ post.date|date:'E' }}</p>
+                                </div>
+                                <h2>{{ post.name }}</h2>
                             </div>
-                            <div class="news_description">{{ post.name }}</div>
+                            <div class="news_content">
+                                <p>{{ post.short_description }}</p>
+                            </div>
                         </div>
                     </a>
                 {% endfor %}

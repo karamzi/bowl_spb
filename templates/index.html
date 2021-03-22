@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <link rel="stylesheet" href="{% static 'css/style3.css' %}">
-    <link rel="stylesheet" href="{% static 'css/layouts.css' %}">
+    <link rel="stylesheet" href="{% static 'css/layouts_1.css' %}">
     <link rel="icon" href="{% static 'img/logo.png' %}">
     <meta name="viewport" content="width=450, initial-scale=0.8">
     <title>Федерация Боулинга Санкт-Петербурга</title>
@@ -37,10 +37,9 @@
                         <div class="accordion">
                             <a href="{% url 'main:calendar' %}">Календарь</a>
                             <a href="{% url 'main:regulations' %}">Регламенты</a>
-                            <a href="{% url 'tournaments:tournaments_list' %}">Отчеты</a>
+                            <a href="{% url 'tournaments:tournaments_list' %}">Турниры</a>
                             <a href="{% url 'rating:rating' %}">Рейтинг и статистика</a>
                             <a href="{% url 'main:students_tournaments' %}">Студенческие турниры</a>
-                            {#                            <a href="#">Любительские и детские</a>#}
                         </div>
                     </div>
                     <div class="nav_link">

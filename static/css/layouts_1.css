@@ -118,7 +118,7 @@ nav {
     align-items: center;
     text-decoration: none;
     padding: 25px 40px;
-    font-size: 18px;
+    font-size: 22px;
     height: 100%;
     color: white;
     transition: color 0.3s ease;
@@ -163,7 +163,7 @@ nav {
     position: absolute;
     display: none;
     width: 100%;
-    top: 73px;
+    top: 100%;
     background-color: rgba(0, 0, 0, 1);
 }
 

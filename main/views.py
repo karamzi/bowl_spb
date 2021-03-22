@@ -1,7 +1,7 @@
 import datetime
 from django.core.exceptions import ObjectDoesNotExist
 from django.shortcuts import render, HttpResponse
-from .models import Profile, Results
+from .models import Profile, Results, StudentsTournaments
 from tournaments.models import Tournaments, Calendar, Years, Regulation
 from rating.models import Rating, Statistics
 from news.models import News
@@ -100,7 +100,11 @@ def regulations(request):
 
 
 def students_tournaments(request):
-    return render(request, 'students_tournaments.html')
+    student_tournament = StudentsTournaments.objects.first()
+    context = {
+        'student_tournament': student_tournament
+    }
+    return render(request, 'students_tournaments.html', context)
 
 
 def contacts(request):
