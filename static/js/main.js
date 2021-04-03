@@ -79,7 +79,9 @@ const years = document.querySelectorAll('.year')
 const rating = document.querySelectorAll('.rating')
 let year = ''
 
-rating[0].style.display = 'flex'
+if (rating) {
+    rating[0].style.display = 'flex'
+}
 
 if (years) {
     years.forEach(element => {
