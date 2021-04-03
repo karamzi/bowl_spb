@@ -510,6 +510,10 @@ video {
     .main {
         height: 450px;
     }
+
+    video {
+        display: none;
+    }
 }
 
 @media (max-width: 850px) {
