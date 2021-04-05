@@ -106,7 +106,7 @@ class Results(models.Model):
     class Meta:
         verbose_name = 'Результат'
         verbose_name_plural = 'Результаты спортсменов'
-        ordering = ['-id']
+        ordering = ['id']
 
 
 class StudentsTournaments(models.Model):
