@@ -126,7 +126,7 @@ def ajax_parse_results(request):
             result = Results()
             year = Years.objects.get(year=datetime.datetime.now().year)
             user, status = Profile.objects.get_or_create(name=player['name'])
-            user.rang = player['rang']
+            user.rang = str(player['rang']).lower()
             user.save()
             statistic, status = Statistics.objects.get_or_create(name=user, year=year)
             statistic.year = year

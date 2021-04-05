@@ -76,7 +76,7 @@
                                                     {% for result in tournament.results.results %}
                                                         <td>{{ result }}</td>
                                                     {% endfor %}
-                                                    <td>0</td>
+                                                    <td>{{ tournament.results.handicap }}</td>
                                                     <td>{{ tournament.results.mean }}</td>
                                                     <td>{{ tournament.results.summ }}</td>
                                                 </tr>
