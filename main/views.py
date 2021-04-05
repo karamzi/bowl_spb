@@ -20,6 +20,11 @@ def index(request):
     date_from = datetime.date(datetime.datetime.now().year, month, 1)
     date_to = datetime.date(datetime.datetime.now().year + month // 12, month % 12 + 1, 1) + datetime.timedelta()
     calendar = Calendar.objects.filter(date_start__gte=date_from, date_start__lt=date_to)
+    is_tournament = True
+    if not calendar:
+        calendar = Calendar.objects.filter(date_start__gte=date_from)[0]
+        calendar = [calendar]
+        is_tournament = False
     man = Rating.objects.filter(league='man', active=True)[:6]
     woman = Rating.objects.filter(league='woman', active=True)[:6]
     context = {
@@ -27,6 +32,7 @@ def index(request):
         'month_list': month_list,
         'current_month': month_list[month - 1],
         'calendar': calendar,
+        'is_tournament': is_tournament,
         'man': man,
         'woman': woman,
     }
@@ -118,7 +124,7 @@ def ajax_parse_results(request):
         tournament = Tournaments.objects.get(pk=data['id'])
         for player in data['players']:
             result = Results()
-            year = Years.objects.get(year=datetime.datetime.now().year - 2)
+            year = Years.objects.get(year=datetime.datetime.now().year)
             user, status = Profile.objects.get_or_create(name=player['name'])
             user.rang = player['rang']
             user.save()
