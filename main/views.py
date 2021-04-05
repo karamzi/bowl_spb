@@ -10,6 +10,7 @@ from django.views.decorators.csrf import csrf_exempt
 
 
 def index(request):
+    nearest_tournament = ''
     news = News.objects.all()[:3]
     month_list = ['Январь', 'Февраль', 'Март', 'Апрель', 'Май', 'Июнь', 'Июль', 'Август', 'Сентябрь', 'Ноябрь',
                   'Октябрь', 'Декабрь']
@@ -22,8 +23,7 @@ def index(request):
     calendar = Calendar.objects.filter(date_start__gte=date_from, date_start__lt=date_to)
     is_tournament = True
     if not calendar:
-        calendar = Calendar.objects.filter(date_start__gte=date_from)[0]
-        calendar = [calendar]
+        nearest_tournament = Calendar.objects.filter(date_start__gte=datetime.datetime.now())[0]
         is_tournament = False
     man = Rating.objects.filter(league='man', active=True)[:6]
     woman = Rating.objects.filter(league='woman', active=True)[:6]
@@ -33,6 +33,7 @@ def index(request):
         'current_month': month_list[month - 1],
         'calendar': calendar,
         'is_tournament': is_tournament,
+        'nearest_tournament': nearest_tournament,
         'man': man,
         'woman': woman,
     }

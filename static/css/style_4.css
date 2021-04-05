@@ -354,8 +354,11 @@ video {
     padding: 12px 0;
 }
 
-.calendar_table td {
+.calendar_table tbody tr {
     background-color: #fafafa;
+}
+
+.calendar_table td {
     border-bottom: solid 1px #ececec;
     border-right: solid 1px #ececec;
     text-align: center;

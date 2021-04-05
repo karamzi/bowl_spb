@@ -3,7 +3,7 @@
 <html lang="ru">
 <head>
     <meta charset="UTF-8">
-    <link rel="stylesheet" href="{% static 'css/style3.css' %}">
+    <link rel="stylesheet" href="{% static 'css/style_4.css' %}">
     <link rel="stylesheet" href="{% static 'css/layouts_2.css' %}">
     <link rel="icon" href="{% static 'img/logo.png' %}">
     <meta name="viewport" content="width=450, initial-scale=0.8">
@@ -119,42 +119,55 @@
                 </div>
             </div>
             <div class="calendar_table">
-                {% if calendar %}
-                    <table>
-                        <thead>
-                        <tr>
-                            <th>№</th>
-                            <th>Соревнование</th>
-                            <th>Город</th>
-                            <th>Статус</th>
-                            <th>Дата начала</th>
-                            <th>Дата окончания</th>
-                            <th>Положение</th>
+                <table>
+                    <thead>
+                    <tr>
+                        <th>№</th>
+                        <th>Соревнование</th>
+                        <th>Город</th>
+                        <th>Статус</th>
+                        <th>Дата начала</th>
+                        <th>Дата окончания</th>
+                        <th>Положение</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {% if not is_tournament %}
+                        <tr style="background-color: #caf6f0;">
+                            <td>*</td>
+                            <td>{{ nearest_tournament.competition }}</td>
+                            <td>{{ nearest_tournament.city }}</td>
+                            <td>{{ nearest_tournament.status }}</td>
+                            <td>{{ nearest_tournament.date_start|date:'d.m' }}</td>
+                            <td>{{ nearest_tournament.date_finish|date:'d.m' }}</td>
+                            <td>
+                                {% if nearest_tournament.regulation %}
+                                    <a href="{{ nearest_tournament.regulation.file.url }}"><img
+                                            src="{% static 'img/file_icon.png' %}"
+                                            alt="rules"></a>
+                                {% endif %}
+                            </td>
                         </tr>
-                        </thead>
-                        <tbody>
-                        {% for event in calendar %}
-                            <tr>
-                                <td>{{ forloop.counter }}</td>
-                                <td>{{ event.competition }}</td>
-                                <td>{{ event.city }}</td>
-                                <td>{{ event.status }}</td>
-                                <td>{{ event.date_start|date:'d.m' }}</td>
-                                <td>{{ event.date_finish|date:'d.m' }}</td>
-                                <td>
-                                    {% if event.regulation %}
-                                        <a href="{{ event.regulation.file.url }}"><img
-                                                src="{% static 'img/file_icon.png' %}"
-                                                alt="rules"></a>
-                                    {% endif %}
-                                </td>
-                            </tr>
-                        {% endfor %}
-                        </tbody>
-                    </table>
-                {% else %}
-                    <h4>В этом месяце турниров не найдено</h4>
-                {% endif %}
+                    {% endif %}
+                    {% for event in calendar %}
+                        <tr>
+                            <td>{{ forloop.counter }}</td>
+                            <td>{{ event.competition }}</td>
+                            <td>{{ event.city }}</td>
+                            <td>{{ event.status }}</td>
+                            <td>{{ event.date_start|date:'d.m' }}</td>
+                            <td>{{ event.date_finish|date:'d.m' }}</td>
+                            <td>
+                                {% if event.regulation %}
+                                    <a href="{{ event.regulation.file.url }}"><img
+                                            src="{% static 'img/file_icon.png' %}"
+                                            alt="rules"></a>
+                                {% endif %}
+                            </td>
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
             </div>
             <div class="calendar_button">
                 <a href="{% url 'main:calendar' %}">Весь календарь</a>
