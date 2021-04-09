@@ -137,6 +137,10 @@ def ajax_parse_results(request):
                 statistic.max = int(player['max'])
             if statistic.min > int(player['min']):
                 statistic.min = int(player['min'])
+            for result in player['results']:
+                if int(result) >= 200:
+                    statistic.games_more_200 = statistic.games_more_200 + 1
+                    statistic.mean_games_more_200 = statistic.games_more_200 / statistic.score * 100
             statistic.mean = statistic.summ / statistic.score
             statistic.save()
             result.tournament = tournament
