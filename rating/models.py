@@ -47,4 +47,4 @@ class Statistics(models.Model):
     class Meta:
         verbose_name = 'Статистику'
         verbose_name_plural = 'Персональная статистика'
-        ordering = ['year', '-summ']
+        ordering = ['year', '-mean']

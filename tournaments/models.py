@@ -47,7 +47,6 @@ class Regulation(models.Model):
 class Tournaments(models.Model):
     year = models.ForeignKey(Years, verbose_name='Год', on_delete=models.PROTECT, related_name='tournament_year')
     name = models.CharField(max_length=50, verbose_name='Название Турнира')
-    short_description = models.TextField(max_length=100, verbose_name='Короткое описание')
     description = models.TextField(verbose_name='Описание')
     date = models.DateField(verbose_name='Дата')
     regulation = models.OneToOneField(Regulation, on_delete=models.CASCADE, verbose_name='Регламент', null=True,

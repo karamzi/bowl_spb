@@ -24,8 +24,8 @@ class RegulationsAdmin(admin.ModelAdmin):
 
 
 class TournamentAdmin(admin.ModelAdmin):
-    list_display = ('name', 'short_description', 'date')
-    list_display_links = ('name', 'short_description')
+    list_display = ('name', 'date')
+    list_display_links = ('name', )
     search_fields = ('name',)
     inlines = [TournamentImgAdmin, TournamentDocumentsAdmin]
     form = TournamentAdminForm
