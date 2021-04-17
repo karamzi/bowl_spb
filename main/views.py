@@ -23,7 +23,7 @@ def index(request):
     calendar = Calendar.objects.filter(date_start__gte=date_from, date_start__lt=date_to)
     is_tournament = True
     if not calendar:
-        nearest_tournament = Calendar.objects.filter(date_start__gte=datetime.datetime.now())[0]
+        nearest_tournament = Calendar.objects.filter(date_start__gte=datetime.datetime.now()).first()
         is_tournament = False
     man = Rating.objects.filter(league='man', active=True)[:6]
     woman = Rating.objects.filter(league='woman', active=True)[:6]

@@ -108,4 +108,10 @@ ______________________ */
     .description {
         font-size: 13px;
     }
+
+    .description img {
+        height: unset !important;
+        width: 300px !important;
+        max-width: 300px;
+    }
 }
