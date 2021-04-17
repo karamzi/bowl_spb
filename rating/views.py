@@ -13,7 +13,6 @@ def rating(request):
             'men': year_item.statistic_year.filter(sex='men'),
             'women': year_item.statistic_year.filter(sex='women'),
             'rating': year_item.rating,
-            'statistic': year_item.statistic,
         }
         context['years'].append(year)
     return render(request, 'rating.html', context)
