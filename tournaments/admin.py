@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Tournaments, Years, Calendar, Regulation
+from .models import Tournaments, Years, Calendar, Regulation, Results
 from django import forms
 from ckeditor_uploader.widgets import CKEditorUploadingWidget
 from main.admin import TournamentImgAdmin, TournamentDocumentsAdmin
@@ -24,19 +24,20 @@ class RegulationsAdmin(admin.ModelAdmin):
 
 
 class TournamentAdmin(admin.ModelAdmin):
-    list_display = ('name', 'short_description', 'date')
-    list_display_links = ('name', 'short_description')
+    list_display = ('name', 'date')
+    list_display_links = ('name', )
     search_fields = ('name',)
     inlines = [TournamentImgAdmin, TournamentDocumentsAdmin]
     form = TournamentAdminForm
 
 
 class YearsAdmin(admin.ModelAdmin):
-    list_display = ('year', 'statistic', 'rating')
-    list_display_links = ('year', 'statistic', 'rating')
+    list_display = ('year', 'rating')
+    list_display_links = ('year', 'rating')
 
 
 admin.site.register(Tournaments, TournamentAdmin)
 admin.site.register(Years, YearsAdmin)
 admin.site.register(Calendar, CalendarAdmin)
 admin.site.register(Regulation, RegulationsAdmin)
+admin.site.register(Results)

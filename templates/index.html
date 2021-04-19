@@ -132,7 +132,7 @@
                     </tr>
                     </thead>
                     <tbody>
-                    {% if not is_tournament %}
+                    {% if not is_tournament and nearest_tournament %}
                         <tr style="background-color: #caf6f0;">
                             <td>*</td>
                             <td>{{ nearest_tournament.competition }}</td>

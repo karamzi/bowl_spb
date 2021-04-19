@@ -23,10 +23,10 @@ def index(request):
     calendar = Calendar.objects.filter(date_start__gte=date_from, date_start__lt=date_to)
     is_tournament = True
     if not calendar:
-        nearest_tournament = Calendar.objects.filter(date_start__gte=datetime.datetime.now())[0]
+        nearest_tournament = Calendar.objects.filter(date_start__gte=datetime.datetime.now()).first()
         is_tournament = False
-    man = Rating.objects.filter(league='man', active=True)[:6]
-    woman = Rating.objects.filter(league='woman', active=True)[:6]
+    man = Rating.objects.filter(league='man', active=True)[:8]
+    woman = Rating.objects.filter(league='woman', active=True)[:8]
     context = {
         'news': news,
         'month_list': month_list,
@@ -127,18 +127,22 @@ def ajax_parse_results(request):
             result = Results()
             year = Years.objects.get(year=datetime.datetime.now().year)
             user, status = Profile.objects.get_or_create(name=player['name'])
+            if status:
+                print(player['name'])
             user.rang = str(player['rang']).lower()
             user.save()
             statistic, status = Statistics.objects.get_or_create(name=user, year=year)
             statistic.year = year
+            results = player['results']['qualification'] + player['results']['finals']
             statistic.summ = statistic.summ + int(player['summ'])
-            statistic.score = statistic.score + len(player['results'])
+            statistic.score = statistic.score + len(results)
+            # statistic.sex = 'women'
             if statistic.max < int(player['max']):
                 statistic.max = int(player['max'])
             if statistic.min > int(player['min']):
                 statistic.min = int(player['min'])
-            for result in player['results']:
-                if int(result) >= 200:
+            for item in results:
+                if int(item) >= 200:
                     statistic.games_more_200 = statistic.games_more_200 + 1
                     statistic.mean_games_more_200 = statistic.games_more_200 / statistic.score * 100
             statistic.mean = statistic.summ / statistic.score

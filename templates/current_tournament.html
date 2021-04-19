@@ -26,10 +26,16 @@
                 {% endfor %}
             {% endif %}
             {% if tournament.regulation %}
-                    <div class="document">
-                        <img src="{% static 'img/pdf_icon.png' %}" alt="">
-                        <a href="{{ tournament.regulation.file.url }}" target="_blank">{{ tournament.regulation.name }}</a>
-                    </div>
+                <div class="document">
+                    <img src="{% static 'img/pdf_icon.png' %}" alt="">
+                    <a href="{{ tournament.regulation.file.url }}" target="_blank">{{ tournament.regulation.name }}</a>
+                </div>
+            {% endif %}
+            {% if tournament.tournament_results %}
+                <div class="document">
+                    <img src="{% static 'img/pdf_icon.png' %}" alt="">
+                    <a href="{{ tournament.tournament_results.file.url }}" target="_blank">{{ tournament.tournament_results.name }}</a>
+                </div>
             {% endif %}
         </div>
     </section>

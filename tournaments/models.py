@@ -15,9 +15,12 @@ def rating_path(instance, filename):
     return 'rating/%s_%s%s' % (instance.year, datetime.now().timestamp(), splitext(filename)[1])
 
 
+def results_path(instance, filename):
+    return 'results/%s%s' % (datetime.now().timestamp(), splitext(filename)[1])
+
+
 class Years(models.Model):
     year = models.SmallIntegerField(verbose_name='Год')
-    statistic = models.FileField(verbose_name='Статистика', upload_to=statistic_path, blank=True, null=True)
     rating = models.FileField(verbose_name='Рейтинг', upload_to=rating_path, blank=True, null=True)
 
     def __str__(self):
@@ -47,11 +50,12 @@ class Regulation(models.Model):
 class Tournaments(models.Model):
     year = models.ForeignKey(Years, verbose_name='Год', on_delete=models.PROTECT, related_name='tournament_year')
     name = models.CharField(max_length=50, verbose_name='Название Турнира')
-    short_description = models.TextField(max_length=100, verbose_name='Короткое описание')
     description = models.TextField(verbose_name='Описание')
     date = models.DateField(verbose_name='Дата')
-    regulation = models.OneToOneField(Regulation, on_delete=models.CASCADE, verbose_name='Регламент', null=True,
-                                      blank=True)
+    regulation = models.ForeignKey(Regulation, on_delete=models.CASCADE, verbose_name='Регламент', null=True,
+                                   blank=True, related_name='regulation')
+    tournament_results = models.ForeignKey('Results', verbose_name='Результаты', on_delete=models.CASCADE, null=True,
+                                           related_name='tournament_results')
 
     def __str__(self):
         return self.name
@@ -78,3 +82,17 @@ class Calendar(models.Model):
         verbose_name = 'турнир'
         verbose_name_plural = 'Календарь турниров'
         ordering = ['date_start']
+
+
+class Results(models.Model):
+    name = models.CharField(max_length=150, verbose_name='Название турнира')
+    file = models.FileField(upload_to=results_path, verbose_name='Результаты')
+    created_at = models.DateField(auto_now_add=True)
+
+    def __str__(self):
+        return self.name
+
+    class Meta:
+        verbose_name = 'Результат'
+        verbose_name_plural = 'Результаты'
+        ordering = ['created_at']

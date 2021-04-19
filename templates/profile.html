@@ -1,7 +1,7 @@
 {% extends 'layouts/basic.html' %}
 {% load static %}
 {% block links %}
-    <link rel="stylesheet" href="{% static 'css/profile.css' %}">
+    <link rel="stylesheet" href="{% static 'css/profile_1.css' %}">
 {% endblock %}
 {% block title %}{{ player }}{% endblock %}
 
@@ -35,15 +35,18 @@
                                         </tr>
                                         </thead>
                                         <tbody>
-                                            <tr>
-                                                <td><a href="{% url 'main:profile' pk=year.statistic.name.pk %}">{{ year.statistic.name }}</a></td>
-                                                <td>{% if year.statistic.name.rang != 'nan' %}{{ year.statistic.name.rang }}{% endif %}</td>
-                                                <td>{{ year.statistic.min }}</td>
-                                                <td>{{ year.statistic.max }}</td>
-                                                <td>{{ year.statistic.mean }}</td>
-                                                <td>{{ year.statistic.score }}</td>
-                                                <td>{{ year.statistic.summ }}</td>
-                                            </tr>
+                                        <tr>
+                                            <td>
+                                                <a href="{% url 'main:profile' pk=year.statistic.name.pk %}">{{ year.statistic.name }}</a>
+                                            </td>
+                                            <td>{% if year.statistic.name.rang != 'nan' %}
+                                                {{ year.statistic.name.rang }}{% endif %}</td>
+                                            <td>{{ year.statistic.min }}</td>
+                                            <td>{{ year.statistic.max }}</td>
+                                            <td>{{ year.statistic.mean }}</td>
+                                            <td>{{ year.statistic.score }}</td>
+                                            <td>{{ year.statistic.summ }}</td>
+                                        </tr>
                                         </tbody>
                                     </table>
                                 </div>
@@ -54,31 +57,61 @@
                                             <table>
                                                 <thead>
                                                 <tr style="background-color: #009688;">
+                                                    <th colspan="2"></th>
+                                                    <th colspan="{{ tournament.results.results.qualification|length }}">
+                                                        Квалификация
+                                                    </th>
+                                                    {% if tournament.results.results.finals %}
+                                                        <th style="background-color: #1b897f;"
+                                                            colspan="{{ tournament.results.results.finals|length }}">
+                                                            Финал
+                                                        </th>
+                                                        <th style="background-color: #1b897f;" colspan="2"></th>
+                                                    {% else %}
+                                                        <th colspan="2"></th>
+                                                    {% endif %}
+                                                </tr>
+                                                <tr style="background-color: #009688;">
                                                     <th>Место</th>
                                                     <th>Спортсмен</th>
-                                                    <th>1 игра</th>
-                                                    <th>2 игра</th>
-                                                    <th>3 игра</th>
-                                                    <th>4 игра</th>
-                                                    <th>5 игра</th>
-                                                    <th>6 игра</th>
-                                                    <th>Гандикап</th>
-                                                    <th>Средний</th>
-                                                    <th>Сумма</th>
+                                                    {% for _ in tournament.results.results.qualification %}
+                                                        <th>{{ forloop.counter }} игра</th>
+                                                    {% endfor %}
+                                                    {% if tournament.results.results.finals %}
+                                                        {% for _ in tournament.results.results.finals %}
+                                                            <th style="background-color: #1b897f;">{{ forloop.counter }}
+                                                                игра
+                                                            </th>
+                                                        {% endfor %}
+                                                        <th style="background-color: #1b897f;">Средний</th>
+                                                        <th style="background-color: #1b897f;">Сумма</th>
+                                                    {% else %}
+                                                        <th>Средний</th>
+                                                        <th>Сумма</th>
+                                                    {% endif %}
+
                                                 </tr>
                                                 </thead>
                                                 <tbody>
                                                 <tr>
-                                                    <td>1</td>
+                                                    <td>{{ tournament.results.results.place }}</td>
                                                     <td>
                                                         <a href="{% url 'main:profile' pk=tournament.results.id %}">{{ tournament.results.name }}</a>
                                                     </td>
-                                                    {% for result in tournament.results.results %}
+                                                    {% for result in tournament.results.results.qualification %}
                                                         <td>{{ result }}</td>
                                                     {% endfor %}
-                                                    <td>{{ tournament.results.handicap }}</td>
-                                                    <td>{{ tournament.results.mean }}</td>
-                                                    <td>{{ tournament.results.summ }}</td>
+                                                    {% if tournament.results.results.finals %}
+                                                        {% for result in tournament.results.results.finals %}
+                                                            <td style="background-color: #dbedf4;">{{ result }}</td>
+                                                        {% endfor %}
+                                                        <td style="background-color: #dbedf4;">{{ tournament.results.mean }}</td>
+                                                        <td style="background-color: #dbedf4;">{{ tournament.results.summ }}</td>
+                                                    {% else %}
+                                                        <td>{{ tournament.results.mean }}</td>
+                                                        <td>{{ tournament.results.summ }}</td>
+                                                    {% endif %}
+
                                                 </tr>
                                                 </tbody>
                                             </table>
