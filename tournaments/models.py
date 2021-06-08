@@ -55,7 +55,7 @@ class Tournaments(models.Model):
     regulation = models.ForeignKey(Regulation, on_delete=models.CASCADE, verbose_name='Регламент', null=True,
                                    blank=True, related_name='regulation')
     tournament_results = models.ForeignKey('Results', verbose_name='Результаты', on_delete=models.CASCADE, null=True,
-                                           related_name='tournament_results')
+                                           related_name='tournament_results', blank=True)
 
     def __str__(self):
         return self.name
