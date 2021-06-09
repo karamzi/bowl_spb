@@ -81,7 +81,7 @@ class Calendar(models.Model):
     class Meta:
         verbose_name = 'турнир'
         verbose_name_plural = 'Календарь турниров'
-        ordering = ['date_start']
+        ordering = ['-date_start']
 
 
 class Results(models.Model):
