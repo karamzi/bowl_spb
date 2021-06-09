@@ -29,13 +29,11 @@
                             <a href="{% url 'main:leadership' %}">Руководство</a>
                             <a href="{% url 'main:documents' %}">Документы</a>
                             <a href="{% url 'main:protocols' %}">Протоколы</a>
-                            {#                            <a href="#">Сборная</a>#}
                         </div>
                     </div>
                     <div class="nav_link">
                         <a href="#">Турниры</a>
                         <div class="accordion">
-                            <a href="{% url 'main:calendar' %}">Календарь</a>
                             <a href="{% url 'main:regulations' %}">Регламенты</a>
                             <a href="{% url 'tournaments:tournaments_list' %}">Турниры</a>
                             <a href="{% url 'rating:rating' %}">Рейтинг и статистика</a>
@@ -43,7 +41,7 @@
                         </div>
                     </div>
                     <div class="nav_link">
-                        <a href="#">Научите меня</a>
+                        <a href="{% url 'main:calendar' %}">Календарь</a>
                     </div>
                     <div class="nav_link">
                         <a href="{% url 'main:contacts' %}">Контакты</a>
