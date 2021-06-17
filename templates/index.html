@@ -3,7 +3,7 @@
 <html lang="ru">
 <head>
     <meta charset="UTF-8">
-    <link rel="stylesheet" href="{% static 'css/style_4.css' %}">
+    <link rel="stylesheet" href="{% static 'css/style_5.css' %}">
     <link rel="stylesheet" href="{% static 'css/layouts_2.css' %}">
     <link rel="icon" href="{% static 'img/logo.png' %}">
     <meta name="viewport" content="width=450, initial-scale=0.8">
@@ -80,20 +80,29 @@
         <div class="news_title">Последние новости</div>
         <div class="news_cards">
             {% for post in news %}
-                <a href="{% url 'news:current_news' pk=post.pk %}" class="news_link">
-                    <div class="news_card">
-                        <div class="news_head">
-                            <div class="news_date">
-                                <p>{{ post.date|date:'j' }}</p>
-                                <p>{{ post.date|date:'E' }}</p>
-                            </div>
-                            <h2>{{ post.name }}</h2>
-                        </div>
-                        <div class="news_content">
-                            <p>{{ post.short_description }}</p>
-                        </div>
+                <figure class="baha1493">
+                    <div {% if not post.news_image %}style="align-items: center; background-color: rgba(26, 48, 104, 0.9)"{% endif %}
+                         class="image">
+                        {% if post.news_image %}
+                            <img src="{{ post.news_image.url }}" alt="ls-sample1"/>
+                        {% else %}
+                            <img width="100px" height="115px" src="{% static 'img/logo.png' %}" alt="">
+                        {% endif %}
                     </div>
-                </a>
+                    <figcaption>
+                        <div class="date">
+                            <span class="day">{{ post.date|date:'j' }}</span>
+                            <span class="month_news">{{ post.date|date:'M' }}</span>
+                        </div>
+                        <h3>{{ post.name }}</h3>
+                        <p>{{ post.short_description }}</p>
+                        <div class="news_footer">
+                            <div class="views"><i class="ion-eye"></i>2,907</div>
+                            {#                            <div class="comments"><i class="ion-chatboxes"></i>23</div>#}
+                        </div>
+                    </figcaption>
+                    <a href="{% url 'news:current_news' pk=post.pk %}"></a>
+                </figure>
             {% endfor %}
         </div>
         <div class="news_button">
