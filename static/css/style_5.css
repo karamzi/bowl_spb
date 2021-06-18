@@ -99,6 +99,7 @@ video {
 .news_cards {
     display: flex;
     justify-content: center;
+    flex-wrap: wrap;
     margin-top: 50px;
     padding-bottom: 20px;
 }
@@ -110,9 +111,8 @@ video {
     float: left;
     overflow: hidden;
     margin: 10px 1%;
-    min-width: 250px;
+    min-width: 290px;
     max-width: 290px;
-    width: 100%;
     background-color: #ffffff;
     color: #000000;
     text-align: left;

@@ -10,21 +10,24 @@ ______________________ */
 }
 
 .news_section h2 {
-    color: white;
+    color: #f9e2c3;
     margin: 50px 0 30px;
     font-size: 30px;
 }
 
 .description {
-    color: white;
+    color: #ebebeb;
     font-size: 18px;
     margin-bottom: 30px;
 }
 
 .description p {
-    margin-bottom: 10px;
+    font-size: 18px;
+    margin-bottom: 5px;
     line-height: 1.5;
     text-align: justify;
+    font-style: italic;
+    font-family: "Lora", serif;
 }
 
 .description img {
@@ -78,13 +81,13 @@ ______________________ */
 
 .document a {
     text-decoration: none;
-    color: #0093E9;
-    font-size: 25px;
+    color: #ebebeb;
+    font-size: 22px;
 }
 
 .document a:hover {
     transition: color 0.3s ease;
-    color: #f64b39;
+    color: #d2652d;
 }
 
 /* media query

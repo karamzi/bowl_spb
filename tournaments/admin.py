@@ -1,11 +1,11 @@
 from django.contrib import admin
-from .models import Tournaments, Years, Calendar, Regulation, Results
+from .models import Tournaments, Years, Calendar, Regulation, Results, Reports
 from django import forms
 from ckeditor_uploader.widgets import CKEditorUploadingWidget
 from main.admin import TournamentImgAdmin, TournamentDocumentsAdmin
 
 
-class TournamentAdminForm(forms.ModelForm):
+class ReportsAdminForm(forms.ModelForm):
     description = forms.CharField(label='Описание', widget=CKEditorUploadingWidget())
 
     class Meta:
@@ -24,11 +24,16 @@ class RegulationsAdmin(admin.ModelAdmin):
 
 
 class TournamentAdmin(admin.ModelAdmin):
+    list_display = ('name', )
+    list_display_links = ('name',)
+
+
+class ReportsAdmin(admin.ModelAdmin):
     list_display = ('name', 'date')
     list_display_links = ('name', )
     search_fields = ('name',)
     inlines = [TournamentImgAdmin, TournamentDocumentsAdmin]
-    form = TournamentAdminForm
+    form = ReportsAdminForm
 
 
 class YearsAdmin(admin.ModelAdmin):
@@ -37,6 +42,7 @@ class YearsAdmin(admin.ModelAdmin):
 
 
 admin.site.register(Tournaments, TournamentAdmin)
+admin.site.register(Reports, ReportsAdmin)
 admin.site.register(Years, YearsAdmin)
 admin.site.register(Calendar, CalendarAdmin)
 admin.site.register(Regulation, RegulationsAdmin)

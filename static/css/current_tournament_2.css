@@ -11,21 +11,24 @@ ______________________ */
 }
 
 .tournament_section h2 {
-    color: white;
+    color: #afd3f4;
     margin: 50px 0 30px;
     font-size: 30px;
 }
 
 .description {
-    color: white;
+    color: #ebebeb;
     font-size: 18px;
     margin-bottom: 30px;
 }
 
 .description p {
-    margin-bottom: 10px;
+    font-size: 18px;
+    margin-bottom: 5px;
     line-height: 1.5;
     text-align: justify;
+    font-style: italic;
+    font-family: "Lora", serif;
 }
 
 .description a {

@@ -5,7 +5,7 @@ from django.core.paginator import Paginator, EmptyPage
 
 def news_list(request):
     news = News.objects.all()
-    paginator = Paginator(news, 9)
+    paginator = Paginator(news, 6)
     page = request.GET.get('page', 1)
     try:
         sheet = paginator.page(page)

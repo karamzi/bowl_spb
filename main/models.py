@@ -2,7 +2,7 @@ from django.db import models
 from datetime import datetime
 from os.path import splitext
 from news.models import News
-from tournaments.models import Tournaments
+from tournaments.models import Reports, Tournaments
 
 
 def img_path(instance, filename):
@@ -31,7 +31,7 @@ class NewsImg(models.Model):
 
 class TournamentImg(models.Model):
     name = models.CharField(max_length=100, verbose_name='Подпись', blank=True, null=True)
-    tournament = models.ForeignKey(Tournaments, related_name='tournament_img', verbose_name='Новость',
+    tournament = models.ForeignKey(Reports, related_name='tournament_img', verbose_name='Новость',
                                    on_delete=models.CASCADE, blank=True, null=True)
     img = models.ImageField(verbose_name='Изображение', upload_to=img_path)
     width = models.SmallIntegerField(verbose_name='Ширина', default=300)
@@ -61,7 +61,7 @@ class NewsDocuments(models.Model):
 
 class TournamentDocuments(models.Model):
     name = models.CharField(max_length=50, verbose_name='Навзание документа')
-    tournament = models.ForeignKey(Tournaments, related_name='tournament_document', verbose_name='Новость',
+    tournament = models.ForeignKey(Reports, related_name='tournament_document', verbose_name='Новость',
                                    on_delete=models.CASCADE, blank=True, null=True)
     file = models.FileField(verbose_name='Докумен', upload_to=document_path)
 
