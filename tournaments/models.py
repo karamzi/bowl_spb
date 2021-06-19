@@ -75,6 +75,7 @@ class Reports(models.Model):
     tournament_results = models.ForeignKey('Results', verbose_name='Результаты', on_delete=models.CASCADE, null=True,
                                            related_name='tournament_results', blank=True)
     report_image = models.ImageField(verbose_name='Изображение новости', upload_to=img_path, null=True, blank=True)
+    count = models.IntegerField(default=0, verbose_name='Просмотры')
 
     def __str__(self):
         return self.name

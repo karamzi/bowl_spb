@@ -27,6 +27,8 @@ def news_list(request):
 
 def current_news(request, pk):
     news = News.objects.get(pk=pk)
+    news.count += 1
+    news.save()
     context = {
         'news': news,
     }

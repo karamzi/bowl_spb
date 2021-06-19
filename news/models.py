@@ -16,6 +16,7 @@ class News(models.Model):
     tournament_results = models.ForeignKey(Results, on_delete=models.PROTECT, verbose_name='Результаты',
                                            related_name='news_results', null=True, blank=True)
     news_image = models.ImageField(verbose_name='Изображение новости', upload_to=img_path, null=True, blank=True)
+    count = models.IntegerField(default=0, verbose_name='Просмотры')
 
     def __str__(self):
         return self.name

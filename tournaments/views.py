@@ -27,6 +27,8 @@ def tournaments_list(request):
 
 def current_tournament(request, pk):
     tournament = Reports.objects.get(pk=pk)
+    tournament.count += 1
+    tournament.save()
     context = {
         'tournament': tournament,
     }
