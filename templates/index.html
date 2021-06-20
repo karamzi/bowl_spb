@@ -202,7 +202,11 @@
                     {% for player in man %}
                         <tr>
                             <td>{{ forloop.counter }}</td>
-                            <td>{{ player.player.rang }}</td>
+                            {% if not player.player.rang == 'nan' %}
+                                <td>{{ player.player.rang }}</td>
+                            {% else %}
+                                <td></td>
+                            {% endif %}
                             <td><a href="{% url 'main:profile' pk=player.player.pk %}">{{ player.player }}</a></td>
                             <td>{{ player.score }}</td>
                         </tr>
@@ -225,7 +229,11 @@
                     {% for player in woman %}
                         <tr>
                             <td>{{ forloop.counter }}</td>
-                            <td>{{ player.player.rang }}</td>
+                            {% if not player.player.rang == 'nan' %}
+                                <td>{{ player.player.rang }}</td>
+                            {% else %}
+                                <td></td>
+                            {% endif %}
                             <td><a href="{% url 'main:profile' pk=player.player.pk %}">{{ player.player }}</a></td>
                             <td>{{ player.score }}</td>
                         </tr>
