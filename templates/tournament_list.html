@@ -14,7 +14,7 @@
                     <figure class="baha1493">
                         <div {% if not post.news_image %}style="align-items: center; background-color: rgba(26, 48, 104, 0.9)"{% endif %}
                              class="image">
-                            {% if post.news_image %}
+                            {% if post.report_image %}
                                 <img src="{{ post.report_image.url }}" alt="ls-sample1"/>
                             {% else %}
                                 <img width="100px" height="115px" src="{% static 'img/logo.png' %}" alt="">
