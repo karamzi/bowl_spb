@@ -263,7 +263,7 @@
     if (Hls.isSupported()) {
         let video = document.getElementById('video')
         let hls = new Hls()
-        hls.loadSource('http://80.78.251.201/static/video/out/master.m3u8')
+        hls.loadSource('https://xn--90aa5bhn.xn--p1ai/static/video/out/master.m3u8')
         hls.attachMedia(video)
         hls.on(Hls.Events.MANIFEST_PARSED, function () {
             video.play();
