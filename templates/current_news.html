@@ -33,7 +33,15 @@
             {% if news.tournament_results %}
                 <div class="document">
                     <img src="{% static 'img/pdf_icon.png' %}" alt="">
-                    <a href="{{ news.tournament_results.file.url }}" target="_blank">{{ news.tournament_results.name }}</a>
+                    <a href="{{ news.tournament_results.file.url }}"
+                       target="_blank">{{ news.tournament_results.name }}</a>
+                </div>
+            {% endif %}
+            {% if news.regulations %}
+                <div class="document">
+                    <img src="{% static 'img/pdf_icon.png' %}" alt="">
+                    <a href="{{ news.regulations.file.url }}"
+                       target="_blank">Регламент</a>
                 </div>
             {% endif %}
         </div>

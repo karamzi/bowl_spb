@@ -9,7 +9,7 @@ class ReportsAdminForm(forms.ModelForm):
     description = forms.CharField(label='Описание', widget=CKEditorUploadingWidget())
 
     class Meta:
-        model = Tournaments
+        model = Reports
         fields = '__all__'
 
 

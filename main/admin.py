@@ -1,25 +1,29 @@
 from django.contrib import admin
-from .models import NewsImg, NewsDocuments, TournamentDocuments, TournamentImg, Profile, Results, StudentsTournaments
+from .models import Img, Documents, Profile, Results, StudentsTournaments
 
 
 class NewsImgAdmin(admin.TabularInline):
-    model = NewsImg
+    model = Img
     extra = 1
+    exclude = ('tournament', 'type')
 
 
 class NewsDocumentsAdmin(admin.TabularInline):
-    model = NewsDocuments
+    model = Documents
     extra = 1
+    exclude = ('tournament', 'type')
 
 
 class TournamentImgAdmin(admin.TabularInline):
-    model = TournamentImg
+    model = Img
     extra = 1
+    exclude = ('news', 'type')
 
 
 class TournamentDocumentsAdmin(admin.TabularInline):
-    model = TournamentDocuments
+    model = Documents
     extra = 1
+    exclude = ('news', 'type')
 
 
 class ResultsAdmin(admin.ModelAdmin):
@@ -35,3 +39,4 @@ class ProfileAdmin(admin.ModelAdmin):
 admin.site.register(Profile, ProfileAdmin)
 admin.site.register(Results, ResultsAdmin)
 admin.site.register(StudentsTournaments)
+admin.site.register(Documents)
