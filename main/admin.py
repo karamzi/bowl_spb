@@ -2,13 +2,23 @@ from django.contrib import admin
 from .models import Img, Documents, Profile, Results, StudentsTournaments
 from django.contrib.auth.admin import UserAdmin
 from django.contrib.auth.models import User
+from django.utils.translation import gettext_lazy as _
 
 
 class CustomUserAdmin(UserAdmin):
-    def save_model(self, request, obj, form, change):
-        if not request.user.is_superuser:
-            obj.is_superuser = False
-        super().save_model(request, obj, form, change)
+    not_superuser_fieldsets = (
+        (None, {'fields': ('username', 'password')}),
+        (_('Personal info'), {'fields': ('first_name', 'last_name', 'email')}),
+        (_('Permissions'), {
+            'fields': ('is_active', 'is_staff', 'groups'),
+        }),
+        (_('Important dates'), {'fields': ('last_login', 'date_joined')}),
+    )
+
+    def get_fieldsets(self, request, obj=None):
+        if obj and not request.user.is_superuser:
+            return self.not_superuser_fieldsets
+        return super().get_fieldsets(request, obj)
 
 
 class NewsImgAdmin(admin.TabularInline):
