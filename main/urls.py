@@ -15,4 +15,5 @@ urlpatterns = [
     path('regulations/', main.regulations, name='regulations'),
     path('studentsTournaments/', main.students_tournaments, name='students_tournaments'),
     path('contacts/', main.contacts, name='contacts'),
+    path('api/calendar/', main.CalendarApiView.as_view()),
 ]

@@ -25,6 +25,7 @@ DEBUG = True
 ALLOWED_HOSTS = ['http://0.0.0.0:8080', 'http://127.0.0.1', '127.0.0.1', 'localhost', '0.0.0.0']
 
 INSTALLED_APPS = [
+    'rest_framework',
     'ckeditor_uploader',
     'ckeditor',
     'main.apps.MainConfig',
@@ -87,6 +88,10 @@ DATABASES = {
         'HOST': '127.0.0.1',
         'PORT': 3306,
     }
+}
+
+REST_FRAMEWORK = {
+    'DATE_FORMAT': "%d.%m.%Y",
 }
 
 # Password validation

@@ -1,12 +1,24 @@
 import datetime
 from django.core.exceptions import ObjectDoesNotExist
 from django.shortcuts import render, HttpResponse
+from rest_framework.response import Response
+from rest_framework.views import APIView
+from .serializers import CalendarSerializer
+
 from .models import Profile, Results, StudentsTournaments
 from tournaments.models import Tournaments, Calendar, Years, Regulation
 from rating.models import Rating, Statistics
 from news.models import News
 import json
 from django.views.decorators.csrf import csrf_exempt
+
+
+class CalendarApiView(APIView):
+
+    def get(self, request):
+        events = Calendar.objects.all()
+        events = CalendarSerializer(events, many=True)
+        return Response(events.data)
 
 
 def index(request):
