@@ -25,6 +25,7 @@ DEBUG = True
 ALLOWED_HOSTS = ['http://0.0.0.0:8080', 'http://127.0.0.1', '127.0.0.1', 'localhost', '0.0.0.0']
 
 INSTALLED_APPS = [
+    'corsheaders',
     'rest_framework',
     'ckeditor_uploader',
     'ckeditor',
