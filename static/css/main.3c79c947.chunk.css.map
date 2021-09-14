@@ -1,1 +1,0 @@
-{"version":3,"sources":["webpack://src/App.css"],"names":[],"mappings":"AAEA,GACI,eACJ,CAEA,qBACI,wBACJ","file":"main.3c79c947.chunk.css","sourcesContent":["@import '~antd/dist/antd.css';\n\nli {\n    list-style: none;\n}\n\n.ant-picker-calendar {\n    background-color: #334065;\n}"]}

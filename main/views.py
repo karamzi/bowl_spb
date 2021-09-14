@@ -1,4 +1,6 @@
 import datetime
+import time
+
 from django.core.exceptions import ObjectDoesNotExist
 from django.shortcuts import render, HttpResponse
 from rest_framework.response import Response
@@ -18,7 +20,16 @@ class CalendarApiView(APIView):
     def get(self, request):
         events = Calendar.objects.all()
         events = CalendarSerializer(events, many=True)
-        return Response(events.data)
+        nearest_tournament = Calendar.objects.filter(date_start__gte=datetime.date.today())
+        if nearest_tournament:
+            nearest_tournament = CalendarSerializer(nearest_tournament[0], many=False)
+            return Response({
+                'events': events.data,
+                'nearest_tournament': nearest_tournament.data,
+            })
+        return Response({
+            'events': events.data
+        })
 
 
 def index(request):
