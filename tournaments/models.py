@@ -87,11 +87,16 @@ class Reports(models.Model):
 
 
 class Calendar(models.Model):
+    TYPE = (
+        ('Sport', 'Спортивный'),
+        ('Student', 'Студенческий'),
+    )
     competition = models.CharField(max_length=50, verbose_name='Название турнира')
     city = models.CharField(max_length=20, verbose_name='Город проведения')
     status = models.CharField(max_length=50, verbose_name='Статус соревнований', blank=True)
     date_start = models.DateField(verbose_name='Дата начала')
     date_finish = models.DateField(verbose_name='Дата окончания')
+    type = models.CharField(max_length=20, verbose_name='Тип турнира', choices=TYPE, default='Sport')
     regulation = models.ForeignKey(Regulation, on_delete=models.CASCADE, verbose_name='Регламент', null=True,
                                    blank=True)
 

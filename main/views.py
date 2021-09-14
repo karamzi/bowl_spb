@@ -35,8 +35,8 @@ class CalendarApiView(APIView):
 def index(request):
     nearest_tournament = ''
     news = News.objects.all()[:3]
-    month_list = ['Январь', 'Февраль', 'Март', 'Апрель', 'Май', 'Июнь', 'Июль', 'Август', 'Сентябрь', 'Ноябрь',
-                  'Октябрь', 'Декабрь']
+    month_list = ['Январь', 'Февраль', 'Март', 'Апрель', 'Май', 'Июнь', 'Июль', 'Август', 'Сентябрь', 'Октябрь',
+                  'Ноябрь', 'Декабрь']
     if 'month' in request.GET:
         month = int(request.GET['month'])
     else:
@@ -96,11 +96,7 @@ def profile(request, pk):
 
 
 def calendar(request):
-    calendar_list = Calendar.objects.all()
-    context = {
-        'calendar': calendar_list
-    }
-    return render(request, 'calendar.html', context)
+    return render(request, 'calendar.html')
 
 
 def goals(request):
