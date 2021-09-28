@@ -81,7 +81,7 @@
         <div class="news_cards">
             {% for post in news %}
                 <figure class="baha1493">
-                    <div {% if not post.news_image %}style="align-items: center; background-color: rgba(26, 48, 104, 0.9)"{% endif %}
+                    <div {% if not post.news_image %}style="align-items: center;"{% endif %}
                          class="image">
                         {% if post.news_image %}
                             <img src="{{ post.news_image.url }}" alt="ls-sample1"/>
