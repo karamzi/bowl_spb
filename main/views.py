@@ -1,6 +1,12 @@
 import datetime
+import time
+
 from django.core.exceptions import ObjectDoesNotExist
 from django.shortcuts import render, HttpResponse
+from rest_framework.response import Response
+from rest_framework.views import APIView
+from .serializers import CalendarSerializer
+
 from .models import Profile, Results, StudentsTournaments
 from tournaments.models import Tournaments, Calendar, Years, Regulation
 from rating.models import Rating, Statistics
@@ -9,11 +15,28 @@ import json
 from django.views.decorators.csrf import csrf_exempt
 
 
+class CalendarApiView(APIView):
+
+    def get(self, request):
+        events = Calendar.objects.all()
+        events = CalendarSerializer(events, many=True)
+        nearest_tournament = Calendar.objects.filter(date_start__gte=datetime.date.today())
+        if nearest_tournament:
+            nearest_tournament = CalendarSerializer(nearest_tournament[0], many=False)
+            return Response({
+                'events': events.data,
+                'nearest_tournament': nearest_tournament.data,
+            })
+        return Response({
+            'events': events.data
+        })
+
+
 def index(request):
     nearest_tournament = ''
     news = News.objects.all()[:3]
-    month_list = ['Январь', 'Февраль', 'Март', 'Апрель', 'Май', 'Июнь', 'Июль', 'Август', 'Сентябрь', 'Ноябрь',
-                  'Октябрь', 'Декабрь']
+    month_list = ['Январь', 'Февраль', 'Март', 'Апрель', 'Май', 'Июнь', 'Июль', 'Август', 'Сентябрь', 'Октябрь',
+                  'Ноябрь', 'Декабрь']
     if 'month' in request.GET:
         month = int(request.GET['month'])
     else:
@@ -73,11 +96,7 @@ def profile(request, pk):
 
 
 def calendar(request):
-    calendar_list = Calendar.objects.all()
-    context = {
-        'calendar': calendar_list
-    }
-    return render(request, 'calendar.html', context)
+    return render(request, 'calendar.html')
 
 
 def goals(request):

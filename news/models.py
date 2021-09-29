@@ -1,7 +1,7 @@
 from django.db import models
 from datetime import datetime
 from os.path import splitext
-from tournaments.models import Results
+from tournaments.models import Results, Regulation
 
 
 def img_path(instance, filename):
@@ -15,6 +15,10 @@ class News(models.Model):
     date = models.DateField(verbose_name='Дата')
     tournament_results = models.ForeignKey(Results, on_delete=models.PROTECT, verbose_name='Результаты',
                                            related_name='news_results', null=True, blank=True)
+    regulations = models.ForeignKey(Regulation, on_delete=models.CASCADE, verbose_name='Регламент',
+                                    related_name='news_regulation', null=True, blank=True)
+    news_image = models.ImageField(verbose_name='Изображение новости', upload_to=img_path, null=True, blank=True)
+    count = models.IntegerField(default=0, verbose_name='Просмотры')
 
     def __str__(self):
         return self.name

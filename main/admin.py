@@ -1,25 +1,48 @@
 from django.contrib import admin
-from .models import NewsImg, NewsDocuments, TournamentDocuments, TournamentImg, Profile, Results, StudentsTournaments
+from .models import Img, Documents, Profile, Results, StudentsTournaments
+from django.contrib.auth.admin import UserAdmin
+from django.contrib.auth.models import User
+from django.utils.translation import gettext_lazy as _
+
+
+class CustomUserAdmin(UserAdmin):
+    not_superuser_fieldsets = (
+        (None, {'fields': ('username', 'password')}),
+        (_('Personal info'), {'fields': ('first_name', 'last_name', 'email')}),
+        (_('Permissions'), {
+            'fields': ('is_active', 'is_staff', 'groups'),
+        }),
+        (_('Important dates'), {'fields': ('last_login', 'date_joined')}),
+    )
+
+    def get_fieldsets(self, request, obj=None):
+        if obj and not request.user.is_superuser:
+            return self.not_superuser_fieldsets
+        return super().get_fieldsets(request, obj)
 
 
 class NewsImgAdmin(admin.TabularInline):
-    model = NewsImg
+    model = Img
     extra = 1
+    exclude = ('tournament', 'type')
 
 
 class NewsDocumentsAdmin(admin.TabularInline):
-    model = NewsDocuments
+    model = Documents
     extra = 1
+    exclude = ('tournament', 'type')
 
 
 class TournamentImgAdmin(admin.TabularInline):
-    model = TournamentImg
+    model = Img
     extra = 1
+    exclude = ('news', 'type')
 
 
 class TournamentDocumentsAdmin(admin.TabularInline):
-    model = TournamentDocuments
+    model = Documents
     extra = 1
+    exclude = ('news', 'type')
 
 
 class ResultsAdmin(admin.ModelAdmin):
@@ -35,3 +58,5 @@ class ProfileAdmin(admin.ModelAdmin):
 admin.site.register(Profile, ProfileAdmin)
 admin.site.register(Results, ResultsAdmin)
 admin.site.register(StudentsTournaments)
+admin.site.unregister(User)
+admin.site.register(User, CustomUserAdmin)

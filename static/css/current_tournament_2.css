@@ -11,21 +11,44 @@ ______________________ */
 }
 
 .tournament_section h2 {
-    color: white;
+    color: #afd3f4;
     margin: 50px 0 30px;
     font-size: 30px;
 }
 
 .description {
-    color: white;
+    color: #ebebeb;
     font-size: 18px;
     margin-bottom: 30px;
 }
 
 .description p {
-    margin-bottom: 10px;
+    font-size: 18px;
+    margin-bottom: 5px;
     line-height: 1.5;
     text-align: justify;
+    font-style: italic;
+    font-family: "Lora", serif;
+}
+
+.description a {
+    text-decoration: none;
+    color: #0093E9;
+}
+
+.description a:hover {
+    transition: color 0.3s ease;
+    color: #03B1F7;
+}
+
+.description img {
+    max-width: 50% !important;
+    height: unset !important;
+}
+
+.description ul li {
+    margin-left: 30px;
+    margin-bottom: 3px;
 }
 
 .photos {
@@ -76,5 +99,9 @@ ______________________ */
 
     .photos img {
         margin: 0 0 20px;
+    }
+
+    .description img {
+        width: 90% !important;
     }
 }

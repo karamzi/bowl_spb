@@ -1,53 +1,69 @@
 {% extends 'layouts/basic.html' %}
 {% load static %}
 {% block links %}
-    <link rel="stylesheet" href="{% static 'css/tournament_list.css' %}">
+    <link rel="stylesheet" href="{% static 'css/tournament_list_1.css' %}">
 {% endblock %}
 {% block title %}Отчеты по турнирам{% endblock %}
 
 {% block content %}
     <section class="tournament_list_section">
         <div class="container">
-            <div class="tournament_title">Прошедише турниры</div>
+            <div class="tournament_title">Отчеты</div>
             <div class="tournament_list">
                 {% for post in tournaments %}
-                    <a class="tournament_link" href="{% url 'tournaments:current_tournament' pk=post.pk %}">
-                        <div class="tournament_card">
-                            <div class="tournament_date">{{ post.date|date:'d.m.Y' }}</div>
-                            {% if post.background_img %}
-                                <div class="tournament_img">
-                                    <img class="photo" src="{{ post.background_img.url }}" alt="">
-                                </div>
+                    <figure class="baha1493">
+                        <div {% if not post.news_image %}style="align-items: center; background-color: rgba(26, 48, 104, 0.9)"{% endif %}
+                             class="image">
+                            {% if post.report_image %}
+                                <img src="{{ post.report_image.url }}" alt="ls-sample1"/>
                             {% else %}
-                                <div class="tournament_img">
-                                    <img class="no_photo" src="{% static 'img/logo.png' %}" alt="">
-                                </div>
+                                <img width="100px" height="115px" src="{% static 'img/logo.png' %}" alt="">
                             {% endif %}
-                            <div class="tournament_description">{{ post.name }}</div>
                         </div>
-                    </a>
+                        <figcaption>
+                            <div class="date">
+                                <span class="day">{{ post.date|date:'j' }}</span>
+                                <span class="month_news">{{ post.date|date:'M' }}</span>
+                            </div>
+                            <h3>{{ post.name }}</h3>
+                            <p>{{ post.short_description }}</p>
+                            <div class="news_footer">
+                                <div class="views"><i class="ion-eye"></i>{{ post.count }}</div>
+                                {#                            <div class="comments"><i class="ion-chatboxes"></i>23</div>#}
+                            </div>
+                        </figcaption>
+                        <a href="{% url 'tournaments:current_tournament' pk=post.pk %}"></a>
+                    </figure>
                 {% endfor %}
             </div>
             <div class="pagination">
-                {% if previous_page_number %}
-                    <a href="{% url 'tournaments:tournaments_list' %}?page={{ previous_page_number }}">Назад</a>
-                {% endif %}
-                {% if previous2 in page_range %}
-                    <a href="{% url 'tournaments:tournaments_list' %}?page={{ previous2 }}">{{ previous2 }}</a>
-                {% endif %}
-                {% if previous_page_number %}
-                    <a href="{% url 'tournaments:tournaments_list' %}?page={{ previous_page_number }}">{{ previous_page_number }}</a>
-                {% endif %}
-                <a class="active" href="#">{{ page }}</a>
-                {% if next_page_number %}
-                    <a href="{% url 'tournaments:tournaments_list' %}?page={{ next_page_number }}">{{ next_page_number }}</a>
-                {% endif %}
-                {% if next2 in page_range %}
-                    <a href="{% url 'tournaments:tournaments_list' %}?page={{ next2 }}">{{ next2 }}</a>
-                {% endif %}
-                {% if next_page_number %}
-                    <a href="{% url 'tournaments:tournaments_list' %}?page={{ next_page_number }}">Вперед</a>
-                {% endif %}
+                <ul class="pagination">
+                    {% if previous_page_number %}
+                        <li><a href="{% url 'tournaments:tournaments_list' %}?page={{ previous_page_number }}">«</a>
+                        </li>
+                    {% endif %}
+                    {% if previous2 in page_range %}
+                        <li><a href="{% url 'tournaments:tournaments_list' %}?page={{ previous2 }}">{{ previous2 }}</a>
+                        </li>
+                    {% endif %}
+                    {% if previous_page_number %}
+                        <li>
+                            <a href="{% url 'tournaments:tournaments_list' %}?page={{ previous_page_number }}">{{ previous_page_number }}</a>
+                        </li>
+                    {% endif %}
+                    <li><a class="active" href="#">{{ page }}</a></li>
+                    {% if next_page_number %}
+                        <li>
+                            <a href="{% url 'tournaments:tournaments_list' %}?page={{ next_page_number }}">{{ next_page_number }}</a>
+                        </li>
+                    {% endif %}
+                    {% if next2 in page_range %}
+                        <li><a href="{% url 'tournaments:tournaments_list' %}?page={{ next2 }}">{{ next2 }}</a></li>
+                    {% endif %}
+                    {% if next_page_number %}
+                        <li><a href="{% url 'tournaments:tournaments_list' %}?page={{ next_page_number }}">»</a></li>
+                    {% endif %}
+                </ul>
             </div>
         </div>
     </section>

@@ -1,12 +1,11 @@
 from django.shortcuts import render
-from django.shortcuts import render
-from .models import Tournaments
+from .models import Reports
 from django.core.paginator import Paginator, EmptyPage
 
 
 def tournaments_list(request):
-    tournaments = Tournaments.objects.all()
-    paginator = Paginator(tournaments, 9)
+    tournaments = Reports.objects.all()
+    paginator = Paginator(tournaments, 6)
     page = request.GET.get('page', 1)
     try:
         sheet = paginator.page(page)
@@ -27,7 +26,9 @@ def tournaments_list(request):
 
 
 def current_tournament(request, pk):
-    tournament = Tournaments.objects.get(pk=pk)
+    tournament = Reports.objects.get(pk=pk)
+    tournament.count += 1
+    tournament.save()
     context = {
         'tournament': tournament,
     }

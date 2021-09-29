@@ -2,7 +2,7 @@ from django.db import models
 from datetime import datetime
 from os.path import splitext
 from news.models import News
-from tournaments.models import Tournaments
+from tournaments.models import Reports, Tournaments, Years
 
 
 def img_path(instance, filename):
@@ -13,56 +13,30 @@ def document_path(instance, filename):
     return 'img/%s%s' % (datetime.now().timestamp(), splitext(filename)[1])
 
 
-class NewsImg(models.Model):
-    name = models.CharField(max_length=100, verbose_name='Подпись', blank=True, null=True)
+class Img(models.Model):
     news = models.ForeignKey(News, related_name='news_img', verbose_name='Новость', on_delete=models.CASCADE,
                              blank=True, null=True)
-    img = models.ImageField(verbose_name='Изображение', upload_to=img_path)
-    width = models.SmallIntegerField(verbose_name='Ширина', default=300)
-    height = models.SmallIntegerField(verbose_name='Высота', default=200)
-
-    def __str__(self):
-        return self.img.url
-
-    class Meta:
-        verbose_name = 'Изображение'
-        verbose_name_plural = 'Изображения'
-
-
-class TournamentImg(models.Model):
-    name = models.CharField(max_length=100, verbose_name='Подпись', blank=True, null=True)
-    tournament = models.ForeignKey(Tournaments, related_name='tournament_img', verbose_name='Новость',
+    tournament = models.ForeignKey(Reports, related_name='tournament_img', verbose_name='Новость',
                                    on_delete=models.CASCADE, blank=True, null=True)
+    name = models.CharField(max_length=100, verbose_name='Подпись', blank=True, null=True)
     img = models.ImageField(verbose_name='Изображение', upload_to=img_path)
     width = models.SmallIntegerField(verbose_name='Ширина', default=300)
     height = models.SmallIntegerField(verbose_name='Высота', default=200)
-
-    def __str__(self):
-        return self.img.url
-
-    class Meta:
-        verbose_name = 'Изображение'
-        verbose_name_plural = 'Изображения'
-
-
-class NewsDocuments(models.Model):
-    name = models.CharField(max_length=50, verbose_name='Навзание документа')
-    news = models.ForeignKey(News, related_name='news_document', verbose_name='Новость', on_delete=models.CASCADE,
-                             blank=True, null=True)
-    file = models.FileField(verbose_name='Докумен', upload_to=document_path)
 
     def __str__(self):
         return self.name
 
     class Meta:
-        verbose_name = 'Документ'
-        verbose_name_plural = 'Документы'
+        verbose_name = 'Изображение'
+        verbose_name_plural = 'Изображения'
 
 
-class TournamentDocuments(models.Model):
-    name = models.CharField(max_length=50, verbose_name='Навзание документа')
-    tournament = models.ForeignKey(Tournaments, related_name='tournament_document', verbose_name='Новость',
+class Documents(models.Model):
+    news = models.ForeignKey(News, related_name='news_document', verbose_name='Новость', on_delete=models.CASCADE,
+                             blank=True, null=True)
+    tournament = models.ForeignKey(Reports, related_name='tournament_document', verbose_name='Новость',
                                    on_delete=models.CASCADE, blank=True, null=True)
+    name = models.CharField(max_length=150, verbose_name='Название документа')
     file = models.FileField(verbose_name='Докумен', upload_to=document_path)
 
     def __str__(self):
@@ -89,8 +63,8 @@ class Profile(models.Model):
         return self.name
 
     class Meta:
-        verbose_name = 'Спортсмен'
-        verbose_name_plural = 'Спортсмены'
+        verbose_name = 'Профиль'
+        verbose_name_plural = 'Профиль'
         ordering = ['name']
 
 
