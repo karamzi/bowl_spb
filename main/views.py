@@ -115,6 +115,10 @@ def protocols(request):
     return render(request, 'protocols.html')
 
 
+def payment(request):
+    return render(request, 'payment.html')
+
+
 def regulations(request):
     years = Years.objects.all()
     regulations = Regulation.objects.filter(archive=False)

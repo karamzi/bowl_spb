@@ -19,7 +19,15 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="72e92296-088b-4955-bcc3-69c686cda68b" name="Default Changelist" comment="" />
+    <list default="true" id="72e92296-088b-4955-bcc3-69c686cda68b" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/static/css/payment.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/payment.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/main/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/main/urls.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/main/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/main/views.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/layouts/basic.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/layouts/basic.html" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -29,8 +37,8 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="Python Script" />
-        <option value="CSS File" />
         <option value="HTML File" />
+        <option value="CSS File" />
       </list>
     </option>
   </component>
@@ -119,6 +127,9 @@
       <workItem from="1617970041968" duration="2673000" />
       <workItem from="1618837379310" duration="1035000" />
       <workItem from="1632927680492" duration="115000" />
+      <workItem from="1632928933705" duration="281000" />
+      <workItem from="1633003543350" duration="16000" />
+      <workItem from="1633608700595" duration="1912000" />
     </task>
     <servers />
   </component>
