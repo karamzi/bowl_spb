@@ -30,6 +30,17 @@ ______________________ */
     font-family: "Lora", serif;
 }
 
+.description a {
+    text-decoration: none;
+    color: #ebebeb;
+    font-size: 22px;
+}
+
+.description a:hover {
+    transition: color 0.3s ease;
+    color: #d2652d;
+}
+
 .description img {
     max-width: 50% !important;
     height: unset !important;
