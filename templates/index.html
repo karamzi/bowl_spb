@@ -87,7 +87,7 @@
                         {% if post.news_image %}
                             <img src="{{ post.news_image.url }}" alt="ls-sample1"/>
                         {% else %}
-                            <img width="100px" height="115px" src="{% static 'img/logo.png' %}" alt="">
+                            <img style="width: unset; object-fit: unset" width="100px" height="115px" src="{% static 'img/logo.png' %}" alt="">
                         {% endif %}
                     </div>
                     <figcaption>
