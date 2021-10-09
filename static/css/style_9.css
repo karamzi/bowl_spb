@@ -153,8 +153,8 @@ video {
 }
 
 .baha1493 img {
-    max-width: 100%;
-    vertical-align: center;
+    width: 100%;
+    object-fit: cover;
     position: relative;
 }
 
