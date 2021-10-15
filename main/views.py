@@ -159,7 +159,7 @@ def ajax_parse_results(request):
             results = player['results']['qualification'] + player['results']['finals']
             statistic.summ = statistic.summ + int(player['summ'])
             statistic.score = statistic.score + len(results)
-            # statistic.sex = 'women'
+            statistic.sex = data['sex']
             if statistic.max < int(player['max']):
                 statistic.max = int(player['max'])
             if statistic.min > int(player['min']):
