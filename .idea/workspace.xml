@@ -19,17 +19,7 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="72e92296-088b-4955-bcc3-69c686cda68b" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/static/css/results.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/templates/results.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/current_news.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/current_news.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tournaments/admin.py" beforeDir="false" afterPath="$PROJECT_DIR$/tournaments/admin.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tournaments/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/tournaments/models.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tournaments/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/tournaments/urls.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tournaments/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/tournaments/views.py" afterDir="false" />
-    </list>
+    <list default="true" id="72e92296-088b-4955-bcc3-69c686cda68b" name="Default Changelist" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -137,7 +127,7 @@
       <workItem from="1633608700595" duration="2240000" />
       <workItem from="1633781656953" duration="599000" />
       <workItem from="1634106258465" duration="1020000" />
-      <workItem from="1634474780644" duration="3639000" />
+      <workItem from="1634474780644" duration="3929000" />
     </task>
     <servers />
   </component>

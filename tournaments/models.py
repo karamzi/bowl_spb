@@ -113,7 +113,7 @@ class Results(models.Model):
     name = models.CharField(max_length=150, verbose_name='Название турнира')
     file = models.FileField(upload_to=results_path, verbose_name='Результаты', blank=True, null=True)
     link = models.CharField(max_length=300, verbose_name='Ссылка на результаты', blank=True, null=True)
-    date = models.DateField()
+    date = models.DateField(auto_now_add=True)
 
     def __str__(self):
         return self.name
