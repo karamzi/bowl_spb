@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from .models import Reports
+from .models import Reports, Results
 from django.core.paginator import Paginator, EmptyPage
 
 
@@ -23,6 +23,13 @@ def tournaments_list(request):
         'next2': int(page) + 2,
     }
     return render(request, 'tournament_list.html', context)
+
+
+def results(request):
+    results = Results.objects.all()
+    return render(request, 'results.html', context={
+        'results': results
+    })
 
 
 def current_tournament(request, pk):

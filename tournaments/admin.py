@@ -41,9 +41,14 @@ class YearsAdmin(admin.ModelAdmin):
     list_display_links = ('year', 'rating')
 
 
+class ResultsAdmin(admin.ModelAdmin):
+    list_display = ('name', 'date')
+    list_display_links = ('name', 'date')
+
+
 admin.site.register(Tournaments, TournamentAdmin)
 admin.site.register(Reports, ReportsAdmin)
 admin.site.register(Years, YearsAdmin)
 admin.site.register(Calendar, CalendarAdmin)
 admin.site.register(Regulation, RegulationsAdmin)
-admin.site.register(Results)
+admin.site.register(Results, ResultsAdmin)

@@ -111,8 +111,9 @@ class Calendar(models.Model):
 
 class Results(models.Model):
     name = models.CharField(max_length=150, verbose_name='Название турнира')
-    file = models.FileField(upload_to=results_path, verbose_name='Результаты')
-    created_at = models.DateField(auto_now_add=True)
+    file = models.FileField(upload_to=results_path, verbose_name='Результаты', blank=True, null=True)
+    link = models.CharField(max_length=300, verbose_name='Ссылка на результаты', blank=True, null=True)
+    date = models.DateField()
 
     def __str__(self):
         return self.name
@@ -120,4 +121,4 @@ class Results(models.Model):
     class Meta:
         verbose_name = 'Результат'
         verbose_name_plural = 'Результаты'
-        ordering = ['created_at']
+        ordering = ['-date']
