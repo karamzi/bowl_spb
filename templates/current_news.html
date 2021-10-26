@@ -31,11 +31,20 @@
                 {% endfor %}
             {% endif %}
             {% if news.tournament_results %}
-                <div class="document">
-                    <img src="{% static 'img/pdf_icon.png' %}" alt="">
-                    <a href="{{ news.tournament_results.file.url }}"
-                       target="_blank">{{ news.tournament_results.name }}</a>
-                </div>
+                {% if news.tournament_results.file %}
+                    <div class="document">
+                        <img src="{% static 'img/pdf_icon.png' %}" alt="">
+                        <a href="{{ news.tournament_results.file.url }}"
+                           target="_blank">{{ news.tournament_results.name }} PDF</a>
+                    </div>
+                {% endif %}
+                {% if news.tournament_results.link %}
+                    <div class="document">
+                        <img src="{% static 'img/pdf_icon.png' %}" alt="">
+                        <a href="{{ news.tournament_results.link }}"
+                           target="_blank">{{ news.tournament_results.name }} google sheets</a>
+                    </div>
+                {% endif %}
             {% endif %}
             {% if news.regulations %}
                 <div class="document">
