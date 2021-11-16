@@ -1,7 +1,7 @@
 {% extends 'layouts/basic.html' %}
 {% load static %}
 {% block links %}
-    <link rel="stylesheet" href="{% static 'css/rating.css' %}">
+    <link rel="stylesheet" href="{% static 'css/rating_1.css' %}">
 {% endblock %}
 {% block title %}Рейтинг и статистика{% endblock %}
 
@@ -32,8 +32,8 @@
                                         <a href="{{ year.rating.url }}" class="rating_link" target="_blank">Рейтинг</a>
                                     {% endif %}
                                 </div>
+                                <h4>Мужчины</h4>
                                 <div class="tournament_result">
-                                    <h4>Мужчины</h4>
                                     <table>
                                         <thead>
                                         <tr style="background-color: #009688;">
@@ -54,7 +54,8 @@
                                                 <td>
                                                     <a href="{% url 'main:profile' pk=player.id %}">{{ player.name.name }}</a>
                                                 </td>
-                                                <td>{% if player.name.rang != 'nan' %}{{ player.name.rang }}{% endif %}</td>
+                                                <td>{% if player.name.rang != 'nan' %}
+                                                    {{ player.name.rang }}{% endif %}</td>
                                                 <td>{{ player.score }}</td>
                                                 <td>{{ player.min }}</td>
                                                 <td>{{ player.max }}</td>
@@ -66,8 +67,8 @@
                                     </table>
                                 </div>
 
+                                <h4>Женщины</h4>
                                 <div class="tournament_result">
-                                    <h4>Женщины</h4>
                                     <table>
                                         <thead>
                                         <tr style="background-color: #009688;">
@@ -88,7 +89,8 @@
                                                 <td>
                                                     <a href="{% url 'main:profile' pk=player.id %}">{{ player.name.name }}</a>
                                                 </td>
-                                                <td>{% if player.name.rang != 'nan' %}{{ player.name.rang }}{% endif %}</td>
+                                                <td>{% if player.name.rang != 'nan' %}
+                                                    {{ player.name.rang }}{% endif %}</td>
                                                 <td>{{ player.score }}</td>
                                                 <td>{{ player.min }}</td>
                                                 <td>{{ player.max }}</td>

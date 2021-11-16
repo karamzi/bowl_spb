@@ -22,38 +22,40 @@
                             <div data-year="{{ year.year }}" class="rating">
                                 <div class="statistic">
                                     <h4>Статистика</h4>
-                                    <table>
-                                        <thead>
-                                        <tr style="background-color: #009688;">
-                                            <th>Спортсмен</th>
-                                            <th>Разряд</th>
-                                            <th>Минимальная игра</th>
-                                            <th>Максимальная игра</th>
-                                            <th>Средний</th>
-                                            <th>Количество Игр</th>
-                                            <th>Сумма</th>
-                                        </tr>
-                                        </thead>
-                                        <tbody>
-                                        <tr>
-                                            <td>
-                                                <a href="{% url 'main:profile' pk=year.statistic.name.pk %}">{{ year.statistic.name }}</a>
-                                            </td>
-                                            <td>{% if year.statistic.name.rang != 'nan' %}
-                                                {{ year.statistic.name.rang }}{% endif %}</td>
-                                            <td>{{ year.statistic.min }}</td>
-                                            <td>{{ year.statistic.max }}</td>
-                                            <td>{{ year.statistic.mean }}</td>
-                                            <td>{{ year.statistic.score }}</td>
-                                            <td>{{ year.statistic.summ }}</td>
-                                        </tr>
-                                        </tbody>
-                                    </table>
+                                    <div class="table-wrap">
+                                        <table>
+                                            <thead>
+                                            <tr style="background-color: #009688;">
+                                                <th>Спортсмен</th>
+                                                <th>Разряд</th>
+                                                <th>Минимальная игра</th>
+                                                <th>Максимальная игра</th>
+                                                <th>Средний</th>
+                                                <th>Количество Игр</th>
+                                                <th>Сумма</th>
+                                            </tr>
+                                            </thead>
+                                            <tbody>
+                                            <tr>
+                                                <td>
+                                                    <a href="{% url 'main:profile' pk=year.statistic.name.pk %}">{{ year.statistic.name }}</a>
+                                                </td>
+                                                <td>{% if year.statistic.name.rang != 'nan' %}
+                                                    {{ year.statistic.name.rang }}{% endif %}</td>
+                                                <td>{{ year.statistic.min }}</td>
+                                                <td>{{ year.statistic.max }}</td>
+                                                <td>{{ year.statistic.mean }}</td>
+                                                <td>{{ year.statistic.score }}</td>
+                                                <td>{{ year.statistic.summ }}</td>
+                                            </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
                                 </div>
                                 {% if year.tournaments %}
                                     {% for tournament in year.tournaments %}
+                                        <h4>{{ tournament.name }}</h4>
                                         <div class="tournament_result">
-                                            <h4>{{ tournament.name }}</h4>
                                             <table>
                                                 <thead>
                                                 <tr style="background-color: #009688;">
