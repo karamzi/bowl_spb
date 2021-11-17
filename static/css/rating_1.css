@@ -150,12 +150,19 @@
 }
 
 .tournament_result td {
-    background-color: #fafafa;
     border-bottom: solid 1px #ececec;
     border-right: solid 1px #ececec;
     text-align: center;
     padding: 7px 7px;
     white-space: nowrap;
+}
+
+.tournament_result tbody tr {
+    background-color: #fafafa;
+}
+
+.tournament_result tbody tr:nth-child(2n) {
+    background-color: #d5f3e8;
 }
 
 .tournament_result a {
