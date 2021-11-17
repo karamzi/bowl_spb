@@ -28,8 +28,8 @@
                         <td style="text-align: left; padding-left: 10px">{{ result.name }}</td>
                         <td>{{ result.date|date:'d.m.Y' }}</td>
                         <td>{{ result.type }}</td>
-                        <td><a href="{{ result.file.url }}" target="_blank">Открыть</a></td>
-                        <td><a href="{{ result.link }}" target="_blank">Открыть</a></td>
+                        <td>{% if result.file %}<a href="{{ result.file.url }}" target="_blank">Открыть</a>{% endif %}</td>
+                        <td>{% if result.link %}<a href="{{ result.link }}" target="_blank">Открыть</a>{% endif %}</td>
                     </tr>
                     {% endfor %}
                     </tbody>
