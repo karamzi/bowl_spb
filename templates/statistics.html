@@ -1,0 +1,111 @@
+{% extends 'layouts/basic.html' %}
+{% load static %}
+{% block links %}
+    <link rel="stylesheet" href="{% static 'css/statistics_2.css' %}">
+{% endblock %}
+{% block title %}Статистика{% endblock %}
+
+{% block content %}
+    <section class="section_rating">
+        <div class="container">
+            <div class="rating_title">Статистика</div>
+            <div class="rating_description">Рейтинг ведется на основе рейтинговых турниров проводимых федерацией
+                согласно
+                общим положениям. Результаты рейтинга используются для формирования сборной команды Санкт-Петербурга на
+                следующий календарный год
+            </div>
+            <div class="rating_by_years">
+                <div class="years">
+                    <div class="years_list">
+                        {% for year in years %}
+                            {% if year.men or year.women %}
+                                <h3 class="year" data-year="{{ year.year }}">{{ year.year }}</h3>
+                                <div class="arrow-8"></div>
+                            {% endif %}
+                        {% endfor %}
+                    </div>
+                    {% for year in years %}
+                        {% if year.men or year.women %}
+                            <div data-year="{{ year.year }}" class="rating">
+                                <div class="rating_links">
+                                    {% if year.rating %}
+                                        <a href="{{ year.rating.url }}" class="rating_link" target="_blank">Рейтинг</a>
+                                    {% endif %}
+                                </div>
+                                <h4>Мужчины</h4>
+                                <div class="tournament_result">
+                                    <table>
+                                        <thead>
+                                        <tr style="background-color: #009688;">
+                                            <th>Место</th>
+                                            <th>Фамилия, Имя</th>
+                                            <th>Звание, разряд</th>
+                                            <th>Кол-во игр</th>
+                                            <th>Худшая игра</th>
+                                            <th>Лучшая игра</th>
+                                            <th>Сумма кеглей</th>
+                                            <th>Средний</th>
+                                        </tr>
+                                        </thead>
+                                        <tbody>
+                                        {% for player in year.men %}
+                                            <tr>
+                                                <td>{{ forloop.counter }}</td>
+                                                <td>
+                                                    <a href="{% url 'main:profile' pk=player.id %}">{{ player.name.name }}</a>
+                                                </td>
+                                                <td>{% if player.name.rang != 'nan' %}
+                                                    {{ player.name.rang }}{% endif %}</td>
+                                                <td>{{ player.score }}</td>
+                                                <td>{{ player.min }}</td>
+                                                <td>{{ player.max }}</td>
+                                                <td>{{ player.summ }}</td>
+                                                <td>{{ player.mean }}</td>
+                                            </tr>
+                                        {% endfor %}
+                                        </tbody>
+                                    </table>
+                                </div>
+
+                                <h4>Женщины</h4>
+                                <div class="tournament_result">
+                                    <table>
+                                        <thead>
+                                        <tr style="background-color: #009688;">
+                                            <th>Место</th>
+                                            <th>Фамилия, Имя</th>
+                                            <th>Звание, разряд</th>
+                                            <th>Кол-во игр</th>
+                                            <th>Худщая игра</th>
+                                            <th>Лучшая игра</th>
+                                            <th>Сумма кеглей</th>
+                                            <th>Средний</th>
+                                        </tr>
+                                        </thead>
+                                        <tbody>
+                                        {% for player in year.women %}
+                                            <tr>
+                                                <td>{{ forloop.counter }}</td>
+                                                <td>
+                                                    <a href="{% url 'main:profile' pk=player.id %}">{{ player.name.name }}</a>
+                                                </td>
+                                                <td>{% if player.name.rang != 'nan' %}
+                                                    {{ player.name.rang }}{% endif %}</td>
+                                                <td>{{ player.score }}</td>
+                                                <td>{{ player.min }}</td>
+                                                <td>{{ player.max }}</td>
+                                                <td>{{ player.summ }}</td>
+                                                <td>{{ player.mean }}</td>
+                                            </tr>
+                                        {% endfor %}
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        {% endif %}
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </section>
+{% endblock %}

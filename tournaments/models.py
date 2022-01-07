@@ -31,8 +31,8 @@ class Years(models.Model):
         return str(self.year)
 
     class Meta:
-        verbose_name = 'Год'
-        verbose_name_plural = 'Общая статистика'
+        verbose_name = 'Рейтинг PDF'
+        verbose_name_plural = 'Годовой Рейтинг PDF'
         ordering = ['-year']
 
 
@@ -47,7 +47,7 @@ class Regulation(models.Model):
 
     class Meta:
         verbose_name = 'Регламент'
-        verbose_name_plural = 'Регламенты'
+        verbose_name_plural = 'Регламенты турниров'
         ordering = ['-year']
 
 
@@ -61,7 +61,7 @@ class Tournaments(models.Model):
 
     class Meta:
         verbose_name = 'Турнир'
-        verbose_name_plural = 'Турниры'
+        verbose_name_plural = 'Турниры (для статистики)'
         ordering = ['-date']
 
 
@@ -82,7 +82,7 @@ class Reports(models.Model):
 
     class Meta:
         verbose_name = 'Отчет'
-        verbose_name_plural = 'Отчеты'
+        verbose_name_plural = 'Отчеты по прощедщим турнирам'
         ordering = ['-date']
 
 
@@ -120,6 +120,6 @@ class Results(models.Model):
         return self.name
 
     class Meta:
-        verbose_name = 'Результат'
-        verbose_name_plural = 'Результаты'
+        verbose_name = 'Результат турнира'
+        verbose_name_plural = 'Результаты турниров'
         ordering = ['-date']

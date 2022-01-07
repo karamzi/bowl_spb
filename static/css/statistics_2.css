@@ -85,23 +85,27 @@
     color: #009688;
 }
 
-.rating_links {
+.rating_button {
     display: flex;
-    justify-content: flex-start;
-    margin-bottom: 20px;
+    justify-content: center;
     width: 100%;
 }
 
-.rating_links a {
-    text-decoration: none;
+.rating_button a {
     color: white;
-    font-size: 20px;
-    margin-right: 20px;
+    text-decoration: none;
+    padding: 15px 30px;
+    border-radius: 50px;
+    font-size: 25px;
+    border: 2px solid #009688;
+    margin: 10px;
+    text-align: center;
+    transition: all 0.3s ease;
 }
 
-.rating_links a:hover {
-    transition: color 0.3s ease;
-    color: #009688;
+.rating_button a:hover {
+    transition: all 0.3s ease;
+    box-shadow: 0 0 20px #eee;
 }
 
 .rating {

@@ -1,5 +1,4 @@
 import datetime
-import time
 
 from django.core.exceptions import ObjectDoesNotExist
 from django.shortcuts import render, HttpResponse

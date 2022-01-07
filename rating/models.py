@@ -18,8 +18,27 @@ class Rating(models.Model):
 
     class Meta:
         verbose_name = 'Рейтинг'
-        verbose_name_plural = 'Рейтинг'
+        verbose_name_plural = 'Рейтинг топ 8'
         ordering = ['league', '-score']
+
+
+class AllRating(models.Model):
+    year = models.ForeignKey(Years, on_delete=models.PROTECT, verbose_name='Год', null=True, blank=True,
+                             related_name='rating_year')
+    SEX = (
+        ('men', 'Мужчины'),
+        ('women', 'Женщины'),
+    )
+    sex = models.CharField(max_length=5, verbose_name='Пол', choices=SEX, default='men')
+    rating = models.TextField(verbose_name='Райтинг Json')
+
+    def __str__(self):
+        return f'Райтинг {self.year.year}года - {self.get_sex_display()}'
+
+    class Meta:
+        verbose_name = 'Полный рейтинг'
+        verbose_name_plural = 'Полный рейтинг (для страницы рейтинг)'
+        ordering = ['year']
 
 
 class Statistics(models.Model):
@@ -46,5 +65,5 @@ class Statistics(models.Model):
 
     class Meta:
         verbose_name = 'Статистику'
-        verbose_name_plural = 'Персональная статистика'
+        verbose_name_plural = 'Персональная статистика игрока'
         ordering = ['year', '-mean']
