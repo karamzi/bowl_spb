@@ -27,11 +27,6 @@
                     {% for year in years %}
                         {% if year.men or year.women %}
                             <div data-year="{{ year.year }}" class="rating">
-                                <div class="rating_links">
-                                    {% if year.rating %}
-                                        <a href="{{ year.rating.url }}" class="rating_link" target="_blank">Рейтинг</a>
-                                    {% endif %}
-                                </div>
                                 <h4>Мужчины</h4>
                                 <div class="tournament_result">
                                     <table>
