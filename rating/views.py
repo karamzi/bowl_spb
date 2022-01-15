@@ -1,10 +1,12 @@
 from django.views.decorators.csrf import csrf_exempt
+from django.core.exceptions import ObjectDoesNotExist
 from django.http import JsonResponse
 import json
 
 from django.shortcuts import render
 from tournaments.models import Years
-from rating.models import AllRating
+from rating.models import AllRating, Rating
+from main.models import Profile
 
 
 def statistic(request):
@@ -42,7 +44,6 @@ def rating(request):
             'rating': year_item.rating
         }
         context['years'].append(year)
-    print(context)
     return render(request, 'rating.html', context)
 
 
@@ -53,6 +54,18 @@ def upload_rating_ajax(request):
     rating, _ = AllRating.objects.get_or_create(year=year, sex=data['sex'])
     rating.rating = json.dumps(data, ensure_ascii=False)
     rating.save()
+    single_rating = Rating.objects.filter(league=data['sex'])
+    for item in single_rating:
+        item.delete()
+    for item in data['data'][1:9]:
+        try:
+            player = Profile.objects.get(name=item[1])
+        except ObjectDoesNotExist:
+            return JsonResponse(status=400, data={
+                'status': 'error',
+                'message': f'player: {item[1]} has not been found'
+            }, json_dumps_params={'ensure_ascii': False})
+        Rating.objects.create(player=player, score=item[-1], league=data['sex'])
     return JsonResponse({
         'status': 'OK',
     })

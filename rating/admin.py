@@ -3,9 +3,8 @@ from .models import Rating, Statistics, AllRating
 
 
 class RatingAdmin(admin.ModelAdmin):
-    list_display = ('player', 'league', 'score', 'active')
+    list_display = ('player', 'league', 'score',)
     list_display_links = ('player', 'league', 'score')
-    list_editable = ('active',)
 
 
 class StatisticsAdmin(admin.ModelAdmin):

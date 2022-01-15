@@ -5,12 +5,11 @@ from tournaments.models import Years
 
 class Rating(models.Model):
     LEAGUE = (
-        ('man', 'Мужчины'),
-        ('woman', 'Женщины'),
+        ('men', 'Мужчины'),
+        ('women', 'Женщины'),
     )
     player = models.OneToOneField(Profile, verbose_name='Спортсмен', on_delete=models.PROTECT)
     score = models.SmallIntegerField(verbose_name='Очки')
-    active = models.BooleanField(default=False, verbose_name='Активный')
     league = models.TextField(choices=LEAGUE, verbose_name='Лига')
 
     def __str__(self):
