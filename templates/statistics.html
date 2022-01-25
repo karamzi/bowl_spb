@@ -82,7 +82,7 @@
                                             <tr>
                                                 <td>{{ forloop.counter }}</td>
                                                 <td>
-                                                    <a href="{% url 'main:profile' pk=player.id %}">{{ player.name.name }}</a>
+                                                    <a href="{% url 'main:profile' pk=player.name.id %}">{{ player.name.name }}</a>
                                                 </td>
                                                 <td>{% if player.name.rang != 'nan' %}
                                                     {{ player.name.rang }}{% endif %}</td>
