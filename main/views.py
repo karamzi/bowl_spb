@@ -6,7 +6,7 @@ from rest_framework.response import Response
 from rest_framework.views import APIView
 from .serializers import CalendarSerializer
 
-from .models import Profile, Results, StudentsTournaments
+from .models import Profile, Results
 from tournaments.models import Tournaments, Calendar, Years, Regulation
 from rating.models import Rating, Statistics
 from news.models import News
@@ -129,11 +129,7 @@ def regulations(request):
 
 
 def students_tournaments(request):
-    student_tournament = StudentsTournaments.objects.first()
-    context = {
-        'student_tournament': student_tournament
-    }
-    return render(request, 'students_tournaments.html', context)
+    return render(request, 'students_tournaments.html')
 
 
 def contacts(request):

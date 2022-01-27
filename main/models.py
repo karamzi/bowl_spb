@@ -81,11 +81,3 @@ class Results(models.Model):
         verbose_name = 'Результат'
         verbose_name_plural = 'Результаты спортсменов'
         ordering = ['id']
-
-
-class StudentsTournaments(models.Model):
-    description = models.TextField(verbose_name='Секция студенчиские турниры')
-
-    class Meta:
-        verbose_name = 'Студенческие турниры'
-        verbose_name_plural = 'Студенческие турниры'

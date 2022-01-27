@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Img, Documents, Profile, Results, StudentsTournaments
+from .models import Img, Documents, Profile, Results
 from django.contrib.auth.admin import UserAdmin
 from django.contrib.auth.models import User
 from django.utils.translation import gettext_lazy as _
@@ -57,6 +57,5 @@ class ProfileAdmin(admin.ModelAdmin):
 
 admin.site.register(Profile, ProfileAdmin)
 admin.site.register(Results, ResultsAdmin)
-admin.site.register(StudentsTournaments)
 admin.site.unregister(User)
 admin.site.register(User, CustomUserAdmin)

@@ -46,6 +46,10 @@
     font-size: 20px;
 }
 
+.students_tournament_section img {
+    max-width: 700px;
+}
+
 /* media query
  _________________________*/
 
