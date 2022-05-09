@@ -18,7 +18,6 @@
                         <th>Дата окончания</th>
                         <th>Вид</th>
                         <th>Результаты PDF</th>
-                        <th>Результаты google sheet</th>
                     </tr>
                     </thead>
                     <tbody>
@@ -29,7 +28,6 @@
                         <td>{{ result.date|date:'d.m.Y' }}</td>
                         <td>{{ result.type }}</td>
                         <td>{% if result.file %}<a href="{{ result.file.url }}" target="_blank">Открыть</a>{% endif %}</td>
-                        <td>{% if result.link %}<a href="{{ result.link }}" target="_blank">Открыть</a>{% endif %}</td>
                     </tr>
                     {% endfor %}
                     </tbody>

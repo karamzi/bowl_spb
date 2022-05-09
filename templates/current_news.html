@@ -2,6 +2,7 @@
 {% load static %}
 {% block links %}
     <link rel="stylesheet" href="{% static 'css/current_news_4.css' %}">
+    <link rel="stylesheet" href="{% static 'css/popup_image.css' %}">
 {% endblock %}
 {% block title %}{{ news.name }}{% endblock %}
 
@@ -14,7 +15,7 @@
                 <div class="photos">
                     {% for img in news.news_img.all %}
                         <div class="photo">
-                            <img src="{{ img.img.url }}" width="{{ img.width }}" height="{{ img.height }}" alt="">
+                            <img class="myImage" src="{{ img.img.url }}" width="{{ img.width }}" height="{{ img.height }}" alt="">
                             {% if img.name %}
                                 <p>{{ img.name }}</p>
                             {% endif %}
@@ -55,7 +56,19 @@
             {% endif %}
         </div>
     </section>
+    <div id="myModal" class="modal">
+
+        <!-- The Close Button -->
+        <span class="close">&times;</span>
+
+        <!-- Modal Content (The Image) -->
+        <img class="modal-content" id="img01">
+
+        <!-- Modal Caption (Image Text) -->
+        <div id="caption"></div>
+    </div>
 {% endblock %}
 
-
-
+{% block scripts %}
+    <script src="{% static 'js/popup_image.js' %}"></script>
+{% endblock %}

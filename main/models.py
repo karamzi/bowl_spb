@@ -23,9 +23,6 @@ class Img(models.Model):
     width = models.SmallIntegerField(verbose_name='Ширина', default=300)
     height = models.SmallIntegerField(verbose_name='Высота', default=200)
 
-    def __str__(self):
-        return self.name
-
     class Meta:
         verbose_name = 'Изображение'
         verbose_name_plural = 'Изображения'
