@@ -580,8 +580,7 @@ video {
     }
 
     video {
-        width: unset;
-        left: -75%;
+        display: none;
     }
 }
 
