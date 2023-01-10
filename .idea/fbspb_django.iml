@@ -15,15 +15,14 @@
   <component name="NewModuleRootManager">
     <content url="file://$MODULE_DIR$">
       <sourceFolder url="file://$MODULE_DIR$" isTestSource="false" />
+      <excludeFolder url="file://$MODULE_DIR$/venv" />
     </content>
-    <orderEntry type="jdk" jdkName="Python 3.8 (fbspb_django)" jdkType="Python SDK" />
+    <orderEntry type="jdk" jdkName="Python 3.8 (fbspb)" jdkType="Python SDK" />
     <orderEntry type="sourceFolder" forTests="false" />
   </component>
   <component name="TemplatesService">
-    <option name="TEMPLATE_CONFIGURATION" value="Django" />
     <option name="TEMPLATE_FOLDERS">
       <list>
-        <option value="$MODULE_DIR$/venv/lib/python3.8/site-packages/django/forms/templates" />
         <option value="$MODULE_DIR$/templates" />
       </list>
     </option>
