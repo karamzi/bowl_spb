@@ -19,11 +19,8 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="72e92296-088b-4955-bcc3-69c686cda68b" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/fbspb_django.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/fbspb_django.iml" afterDir="false" />
+    <list default="true" id="72e92296-088b-4955-bcc3-69c686cda68b" name="Default Changelist" comment="new payments">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docker-compose.yml" beforeDir="false" afterPath="$PROJECT_DIR$/docker-compose.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/req.txt" beforeDir="false" afterPath="$PROJECT_DIR$/req.txt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -50,12 +47,16 @@
     <option name="stateVersion" value="1" />
   </component>
   <component name="ProjectId" id="1mnnI4rZtlMmY0clsOyD6QlJ20m" />
+  <component name="ProjectLevelVcsManager">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">{
   &quot;keyToString&quot;: {
+    &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
@@ -144,8 +145,16 @@
       <workItem from="1667454240426" duration="652000" />
       <workItem from="1667455692154" duration="847000" />
       <workItem from="1667541281198" duration="4060000" />
-      <workItem from="1673365843130" duration="329000" />
+      <workItem from="1673365843130" duration="1237000" />
     </task>
+    <task id="LOCAL-00001" summary="new payments">
+      <created>1673366278825</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1673366278825</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -161,6 +170,11 @@
         </entry>
       </map>
     </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
+    <MESSAGE value="new payments" />
+    <option name="LAST_COMMIT_MESSAGE" value="new payments" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/fbspb_django$test.coverage" NAME="test Coverage Results" MODIFIED="1610208955798" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/main" />
